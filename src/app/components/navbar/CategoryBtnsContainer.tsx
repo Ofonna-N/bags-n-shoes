@@ -1,12 +1,12 @@
 "use client";
 
-import CategoryMenuBtn from "./CategoryMenuBtn";
+import NavBarMenuDropdwn from "./NavBarMenuDropdwn";
 
 const CategoryBtnsContainer = () => {
   return (
-    <div className="text-2xl ml-6 hidden lg:flex lg:gap-8">
-      <CategoryMenuBtn label="Bags" />
-      <CategoryMenuBtn label="Shoes" />
+    <div className="text-[1.4rem] ml-6 hidden lg:flex lg:gap-8">
+      <NavBarMenuDropdwn label="Bags" />
+      <NavBarMenuDropdwn label="Shoes" />
     </div>
   );
 };

@@ -4,6 +4,8 @@ import "./globals.css";
 import AppProvider from "./components/AppProvider";
 import Container from "./components/containers/Container";
 import MenuSidePanel from "./components/navbar/panels/MenuSidePanel";
+import MenuSidePanelWrapper from "./components/panels/MenuSidePanelWrapper";
+import FilterSortingSideMenuOverlay from "./products/components/panels/FilterSortingSideMenuOverlay";
 
 export const metadata = {
   title: 'Bags "n" Shoes',
@@ -29,8 +31,12 @@ export default function RootLayout({
               </Container>
             </div>
             <div className="relative">
-              {children} <MenuSidePanel />
+              {children}
+              <MenuSidePanelWrapper isLeft={true} isNavMenu={true}>
+                <MenuSidePanel />
+              </MenuSidePanelWrapper>
             </div>
+            <FilterSortingSideMenuOverlay />
           </div>
         </body>
       </AppProvider>

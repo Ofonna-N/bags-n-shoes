@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "@/customHooks/storeHooks";
 const MenuToggler = () => {
   const menuDispach = useAppDispatch();
   const sideMenuToggled = useAppSelector(
-    (state) => state.SideMenuToggleSlice.toggled
+    (state) => state.SideMenuToggleSlice.NavMenutoggled.toggled
   );
 
   return (
