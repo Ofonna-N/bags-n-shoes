@@ -12,7 +12,7 @@ const FilterSortingBar = () => {
   const dispachFilterMenu = useAppDispatch();
 
   return (
-    <div className="py-6 flex justify-between text-[1.4rem] border-b gap-8 items-center">
+    <div className="py-6 mb-8 flex justify-between text-[1.4rem]  gap-8 items-center">
       <button
         className="flex items-center gap-2  md:hidden"
         onClick={() =>

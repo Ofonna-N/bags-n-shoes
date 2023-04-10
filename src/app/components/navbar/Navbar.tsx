@@ -4,6 +4,7 @@ import NavBarRightSideWrapper from "./NavBarRightSideWrapper";
 
 const Navbar = () => {
   // console.log("Nav bar rendered");
+  // console.log(process.env.API_KEY);
   return (
     <div className="relative py-12 shadow-sm flex items-center justify-between gap-8">
       <MenuToggler />

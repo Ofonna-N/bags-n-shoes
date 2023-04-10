@@ -47,7 +47,7 @@ const FilterCheckboxMenu: React.FC<Props> = ({ menuTitle }) => {
       menuHeaderTitle={`${selectedCount} Selected`}
       onReset={onResetCheckboxes}
     >
-      <div className="flex flex-col gap-4 pb-6 pt-4  px-[3rem]">
+      <div className="flex flex-col gap-4 pb-6 pt-4 px-[3rem]">
         <CheckboxInput
           inputLabel={`${menuTitle} In Stock`}
           onChecked={onCheckboxSelected}
