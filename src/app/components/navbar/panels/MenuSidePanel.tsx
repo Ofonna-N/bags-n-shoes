@@ -6,23 +6,34 @@ import SideMenuBtn from "../SideMenuBtn";
 import SubMenuSidePanel from "../../panels/SubMenuSidePanel";
 
 const MenuSidePanel = () => {
-  const [subMenuToggled, setSubMenuToggled] = useState(false);
+  const [subMenuToggled, setSubMenuToggled] = useState({
+    title: "",
+    toggled: false,
+  });
 
-  const onSideMenuBtnClicked = () => {
-    setSubMenuToggled(true);
+  const onSideMenuBtnClicked = (title: string) => {
+    setSubMenuToggled({ title, toggled: true });
   };
   const onSubMenuBtnClicked = () => {
-    setSubMenuToggled(false);
+    setSubMenuToggled({ title: "", toggled: false });
   };
 
   return (
     <div className="mt-16">
-      <SideMenuBtn label="Bags" onClicked={onSideMenuBtnClicked} />
-      <SideMenuBtn label="Shoes" onClicked={onSideMenuBtnClicked} />
-      <SubMenuSidePanel
-        isToggled={subMenuToggled}
-        onBackbtnClicked={onSubMenuBtnClicked}
+      <SideMenuBtn
+        label="Bags"
+        onClicked={() => onSideMenuBtnClicked("Bags")}
       />
+      <SideMenuBtn
+        label="Shoes"
+        onClicked={() => onSideMenuBtnClicked("Shoes")}
+      />
+      <SubMenuSidePanel
+        data={subMenuToggled}
+        onBackbtnClicked={onSubMenuBtnClicked}
+      >
+        From Main Menu
+      </SubMenuSidePanel>
     </div>
   );
 };

@@ -10,6 +10,7 @@ const ProductsContainer = ({
 }: {
   productsData: DocumentData[];
 }) => {
+  // console.log(productsData);
   //products from database
   // const productsData = await getProducts();
 

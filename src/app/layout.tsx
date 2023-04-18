@@ -5,12 +5,49 @@ import AppProvider from "./components/AppProvider";
 import Container from "./components/containers/Container";
 import MenuSidePanel from "./components/navbar/panels/MenuSidePanel";
 import MenuSidePanelWrapper from "./components/panels/MenuSidePanelWrapper";
-import FilterSortingSideMenuOverlay from "./products/components/panels/FilterSortingSideMenuOverlay";
+// import FilterSortingSideMenuOverlay from "./products/components/panels/FilterSortingSideMenuOverlay";
+import { DocumentData } from "firebase/firestore";
+import { ProductsFilter } from "@/utility/CustomTypes";
+import {
+  apiURLAvailablity,
+  apiURLColors,
+  apiURLProductType,
+  apiURLProducts,
+} from "@/utility/baseExports";
+import FilterSortingSideMenuOverlay from "./productslisting/components/panels/FilterSortingSideMenuOverlay";
 
 export const metadata = {
   title: 'Bags "n" Shoes',
   description: "welcome to our demo store for selling bags and shoes",
 };
+
+export async function GetProducts(): Promise<DocumentData[]> {
+  const productsResponse = await fetch(apiURLProducts);
+  const data = await productsResponse.json();
+
+  return data;
+}
+
+export async function GetColorFilters(): Promise<ProductsFilter[]> {
+  const response = await fetch(apiURLColors);
+  const colorsFilter: ProductsFilter[] = await response.json();
+
+  return colorsFilter;
+}
+
+export async function GetProductTypes(): Promise<ProductsFilter[]> {
+  const response = await fetch(apiURLProductType);
+  const producttypeFilter: ProductsFilter[] = await response.json();
+
+  return producttypeFilter;
+}
+
+export async function GetProductsAvailability(): Promise<ProductsFilter[]> {
+  const response = await fetch(apiURLAvailablity);
+  const availabilityFilter: ProductsFilter[] = await response.json();
+
+  return availabilityFilter;
+}
 
 export default function RootLayout({
   children,

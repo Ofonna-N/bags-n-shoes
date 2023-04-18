@@ -1,17 +1,15 @@
 // import { database } from "../../../../firebaseInit";
 // import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { NextResponse } from "next/server";
+import { database } from "../../../../firebaseInit";
+import { collection, getDocs } from "firebase/firestore";
 
-export async function GET(request: Request) {
-  // const docRef = doc(database, "products", "Art Deco");
-  // const docSnap = await getDoc(docRef);
+export async function GET() {
+  const productsCol = collection(database, "products");
+  const productsSnapshot = await getDocs(productsCol);
+  const productsDocuments = productsSnapshot.docs;
+  // console.log(productsDocuments, "from route");
+  return NextResponse.json(productsDocuments.map((doc) => doc.data()));
 
-  // if (docSnap.exists()) {
-  //   console.log(docSnap.data().color);
-  //   return NextResponse.json(docSnap.data().color);
-  // } else {
-  //   return NextResponse.json("doesnt exist");
-  // }
-
-  return NextResponse.json("querySnapshot.docs");
+  // return NextResponse.json("querySnapshot.docs");
 }

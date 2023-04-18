@@ -1,8 +1,16 @@
-import { Store, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import SideMenuToggleSlice from "./slices/SideMenuToggleSlice";
+import CheckboxFilterSlice from "./slices/CheckboxFilterSlice";
+import PriceRangeFilterSlice from "./slices/PriceRangeFilterSlice";
+import SortingDropdownSlice from "./slices/SortingDropdownSlice";
 
 const store = configureStore({
-  reducer: { SideMenuToggleSlice },
+  reducer: {
+    SideMenuToggleSlice,
+    CheckboxFilterSlice,
+    PriceRangeFilterSlice,
+    SortingDropdownSlice,
+  },
 });
 
 export default store;

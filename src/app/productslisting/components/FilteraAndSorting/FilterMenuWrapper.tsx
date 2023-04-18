@@ -41,7 +41,7 @@ const FilterMenuWrapper: React.FC<Props> = ({
       <div
         className={`${
           toggleDropdwn ? "block" : "hidden"
-        } absolute top-[150%] left-0 bg-white border min-w-[25rem]`}
+        } absolute top-[150%] left-0 bg-white border min-w-[35rem] z-50`}
       >
         <div className="flex justify-between border-b mb-3 text-2xl p-[2rem]">
           <span> {menuHeaderTitle}</span>
