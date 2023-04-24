@@ -21,7 +21,7 @@ const SubMenuSidePanel: React.FC<Props> = ({
     >
       <SideMenuBtn label={data.title} back onClicked={onBackbtnClicked} />
 
-      <div className=" bg-red-600 overflow-y-scroll h-full pb-12">
+      <div className="bg-red-600 overflow-y-scroll h-full pb-12">
         {children}
       </div>
     </div>

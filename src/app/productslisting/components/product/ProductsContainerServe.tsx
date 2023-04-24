@@ -9,10 +9,11 @@ import { GetProducts } from "@/app/layout";
 
 const ProductsContainerServe = async () => {
   const productsData = await GetProducts();
+
   // const productsData = await data;
   return (
     <>
-      <ProductsContainer productsData={productsData} />
+      <ProductsContainer />
     </>
   );
 };

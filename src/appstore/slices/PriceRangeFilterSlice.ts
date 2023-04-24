@@ -18,7 +18,7 @@ const PriceRangeFilterSlice = createSlice({
       const { from } = action.payload;
       //   console.log(from, "Update from state");
       // console.log("from", from, "to", state.to);
-      state.from = from;
+      state.from = Number(from);
 
       if (from && !state.to) {
         state.to = Number(from) + 1;
@@ -29,14 +29,14 @@ const PriceRangeFilterSlice = createSlice({
     updateToState(state, action) {
       const { to } = action.payload;
       if (to && !state.from) {
-        state.to = to;
+        state.to = Number(to);
         state.from = 0;
-        console.log("ARRR");
+        // console.log("ARRR");
       } else if (to && state.from && state.from > to) {
-        state.to = to;
+        state.to = Number(to);
         state.from = Number(to) - 1;
       } else {
-        state.to = to;
+        state.to = Number(to);
       }
     },
   },

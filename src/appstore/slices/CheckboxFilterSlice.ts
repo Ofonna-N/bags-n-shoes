@@ -24,17 +24,48 @@ const CheckboxFilterSlice = createSlice({
       };
     },
 
-    setSelectedCheckboxCount(state, action) {
-      const { menuKey, selected } = action.payload;
+    // setSelectedCheckboxCount(state, action) {
+    //   const { menuKey, selected } = action.payload;
+    //   state[menuKey] = {
+    //     ...state[menuKey],
+    //     selected: selected,
+    //   };
+    // },
+
+    addSelectedCheckboxCount(state, action) {
+      const { menuKey } = action.payload;
       state[menuKey] = {
         ...state[menuKey],
-        selected: selected,
+        selected: state[menuKey].selected + 1,
+      };
+    },
+
+    subtractSelectedCheckboxCount(state, action) {
+      const { menuKey } = action.payload;
+      state[menuKey] = {
+        ...state[menuKey],
+        selected: state[menuKey].selected - 1,
+      };
+    },
+
+    resetSelectedCheckboxCount(
+      state,
+      { payload }: { payload: { menuKey: string } }
+    ) {
+      const { menuKey } = payload;
+      state[menuKey] = {
+        ...state[menuKey],
+        selected: 0,
       };
     },
   },
 });
 
-export const { toggleCheckboxFilter, setSelectedCheckboxCount } =
-  CheckboxFilterSlice.actions;
+export const {
+  toggleCheckboxFilter,
+  addSelectedCheckboxCount,
+  subtractSelectedCheckboxCount,
+  resetSelectedCheckboxCount,
+} = CheckboxFilterSlice.actions;
 
 export default CheckboxFilterSlice.reducer;

@@ -18,9 +18,9 @@ const NavBarMenuDropdwn: React.FC<Props> = ({ label }) => {
       className="relative z-50"
       tabIndex={0}
       onBlur={(e) => {
-        console.log("current target", e.currentTarget);
-        console.log("target", e.target);
-        console.log("related target", e.relatedTarget);
+        // console.log("current target", e.currentTarget);
+        // console.log("target", e.target);
+        // console.log("related target", e.relatedTarget);
         if (e.currentTarget.contains(e.relatedTarget)) {
           return;
         } else {

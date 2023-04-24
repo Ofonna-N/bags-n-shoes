@@ -5,10 +5,17 @@ import React, { useEffect, useState } from "react";
 import FilterMenuWrapper from "./FilterMenuWrapper";
 import { useAppDispatch, useAppSelector } from "@/customHooks/storeHooks";
 import {
-  setSelectedCheckboxCount,
+  addSelectedCheckboxCount,
+  resetSelectedCheckboxCount,
+  subtractSelectedCheckboxCount,
   toggleCheckboxFilter,
 } from "@/appstore/slices/CheckboxFilterSlice";
 import { ProductsFilter } from "@/utility/CustomTypes";
+import {
+  addCheckboxBadge,
+  removeCheckboxBadge,
+} from "@/appstore/slices/SelectPanelSlice";
+import { filterSortingStateTypes } from "@/utility/baseExports";
 
 interface Props {
   menuTitle: string;
@@ -22,7 +29,7 @@ const FilterCheckboxMenu: React.FC<Props> = ({
   isSideMenu,
 }) => {
   // const [selectedCount, setSelectedCount] = useState<number>(0);
-  const dispachCheck = useAppDispatch();
+  const dispach = useAppDispatch();
   const menuKey = menuTitle.toLowerCase().replaceAll(" ", "");
   const checkBoxFilterState = useAppSelector(
     (state) => state.CheckboxFilterSlice
@@ -57,16 +64,26 @@ const FilterCheckboxMenu: React.FC<Props> = ({
   };
 
   const onCheckboxSelected = (checked: boolean, id: string) => {
-    dispachCheck(
-      setSelectedCheckboxCount({
-        menuKey,
-        selected: checked
-          ? checkBoxFilterState[menuKey].selected + 1
-          : checkBoxFilterState[menuKey].selected - 1,
-      })
-    );
-    // setSelectedCount((prev) => (checked ? prev + 1 : prev - 1));
-    dispachCheck(
+    if (checked) {
+      dispach(addSelectedCheckboxCount({ menuKey }));
+      dispach(
+        addCheckboxBadge({
+          key: id,
+          value: id,
+          type: filterSortingStateTypes.checkbox,
+          categoryKey: menuKey,
+        })
+      );
+    } else {
+      subtractSelectedCheckboxCount({ menuKey });
+      dispach(
+        removeCheckboxBadge({
+          key: id,
+        })
+      );
+    }
+
+    dispach(
       toggleCheckboxFilter({
         menuKey,
         menuCheckBoxValue: { checkBoxKey: id, value: checked },
@@ -76,39 +93,45 @@ const FilterCheckboxMenu: React.FC<Props> = ({
 
   const onResetCheckboxes = () => {
     for (const [key, value] of Object.entries(checkBoxFilterState[menuKey])) {
-      dispachCheck(
+      subtractSelectedCheckboxCount({ menuKey });
+      dispach(
+        removeCheckboxBadge({
+          key,
+        })
+      );
+      dispach(
         toggleCheckboxFilter({
           menuKey,
           menuCheckBoxValue: { checkBoxKey: key, value: false },
         })
       );
     }
-    dispachCheck(setSelectedCheckboxCount({ menuKey, selected: 0 }));
+    // dispach(setSelectedCheckboxCount({ menuKey, selected: 0 }));
+    dispach(resetSelectedCheckboxCount({ menuKey }));
   };
 
   useEffect(() => {
     if (Object.hasOwn(checkBoxFilterState, menuKey)) {
-      console.log("Redux state already exists");
+      // console.log("Redux state already exists");
       return;
     }
     for (const { key, count } of checkboxData) {
       // console.log(key, "this is our key");
-      dispachCheck(
+      dispach(
         toggleCheckboxFilter({
           menuKey,
           menuCheckBoxValue: { checkBoxKey: key, value: false },
         })
       );
     }
-    dispachCheck(setSelectedCheckboxCount({ menuKey, selected: 0 }));
+    // dispach(setSelectedCheckboxCount({ menuKey, selected: 0 }));
+    dispach(resetSelectedCheckboxCount({ menuKey }));
   }, [checkboxData]);
 
   const getMenu = () => {
     return isSideMenu ? (
       <>{checkBoxesDisplay()}</>
     ) : (
-      // <ul className="flex flex-col gap-4 pb-6 pt-4 px-[3rem]">
-      // </ul>
       <FilterMenuWrapper
         menuTitle={menuTitle}
         menuHeaderTitle={`${

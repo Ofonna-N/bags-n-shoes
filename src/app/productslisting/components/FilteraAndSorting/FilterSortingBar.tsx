@@ -23,7 +23,7 @@ const FilterSortingBar = async () => {
   const productsCount = await (await GetProducts()).length;
   // console.log(availabilityPromise, "logging Availability");
   return (
-    <div className="py-6 mb-8 flex justify-between text-[1.4rem]  gap-8 items-center">
+    <div className="py-2 mb-2 flex justify-between text-[1.4rem]  gap-8 items-center">
       <FilterSortingSideMenuBtn />
       <div className="hidden md:flex flex-wrap gap-[2.5rem]">
         <span>Filter:</span>

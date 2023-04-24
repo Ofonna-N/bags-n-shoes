@@ -3,6 +3,7 @@ import SideMenuToggleSlice from "./slices/SideMenuToggleSlice";
 import CheckboxFilterSlice from "./slices/CheckboxFilterSlice";
 import PriceRangeFilterSlice from "./slices/PriceRangeFilterSlice";
 import SortingDropdownSlice from "./slices/SortingDropdownSlice";
+import SelectPanelSlice from "./slices/SelectPanelSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     CheckboxFilterSlice,
     PriceRangeFilterSlice,
     SortingDropdownSlice,
+    SelectPanelSlice,
   },
 });
 

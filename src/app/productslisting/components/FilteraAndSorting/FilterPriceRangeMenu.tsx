@@ -2,17 +2,25 @@
 
 import NavbarMenubtn from "@/app/components/navbar/NavbarMenubtn";
 import FilterMenuWrapper from "./FilterMenuWrapper";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/customHooks/storeHooks";
 import {
   updateFromState,
   updateToState,
 } from "@/appstore/slices/PriceRangeFilterSlice";
+import {
+  addPriceRangeBadge,
+  removePriceRangeBadge,
+} from "@/appstore/slices/SelectPanelSlice";
+import { filterSortingStateTypes } from "@/utility/baseExports";
 
 interface Props {
   isSideMenu?: boolean;
   menuTitle: string;
 }
+
+const priceRangeKey = "price-range";
+
 const FilterPriceRangeMenu: React.FC<Props> = ({ menuTitle, isSideMenu }) => {
   const [toggleDropdwn, setToggleDropdwn] = useState(false);
 
@@ -27,7 +35,32 @@ const FilterPriceRangeMenu: React.FC<Props> = ({ menuTitle, isSideMenu }) => {
   const onReset = () => {
     dispach(updateFromState({ from: undefined }));
     dispach(updateToState({ to: undefined }));
+    dispach(
+      removePriceRangeBadge({
+        key: priceRangeKey,
+      })
+    );
   };
+
+  useEffect(() => {
+    // console.log("from", fromState, "to", toState);
+    // console.log("from type", typeof fromState, "to type", typeof toState);
+    if (!fromState && !toState) return;
+    dispach(
+      addPriceRangeBadge({
+        key: priceRangeKey,
+        categoryKey: filterSortingStateTypes.priceRange,
+        value: `$${
+          typeof fromState === "number"
+            ? fromState?.toFixed(2)
+            : (999).toFixed(2)
+        }-$${
+          typeof toState === "number" ? toState?.toFixed(2) : (999).toFixed(2)
+        }`,
+        type: filterSortingStateTypes.priceRange,
+      })
+    );
+  }, [fromState, toState]);
 
   const priceRangeDisplay = () => {
     return (
@@ -43,11 +76,6 @@ const FilterPriceRangeMenu: React.FC<Props> = ({ menuTitle, isSideMenu }) => {
             onChange={(e) => {
               // console.log("From: ", fromState, "to", toState);
               dispach(updateFromState({ from: e.target.value }));
-              // if (fromState && !toState) {
-              //   dispach(updateToState({ to: Number(fromState) + 1 }));
-              // } else if (fromState && toState && fromState >= toState) {
-              //   dispach(updateToState({ to: Number(fromState) + 1 }));
-              // }
             }}
           />
           <span

@@ -7,10 +7,11 @@ import MenuSidePanel from "./components/navbar/panels/MenuSidePanel";
 import MenuSidePanelWrapper from "./components/panels/MenuSidePanelWrapper";
 // import FilterSortingSideMenuOverlay from "./products/components/panels/FilterSortingSideMenuOverlay";
 import { DocumentData } from "firebase/firestore";
-import { ProductsFilter } from "@/utility/CustomTypes";
+import { Product, ProductsFilter } from "@/utility/CustomTypes";
 import {
   apiURLAvailablity,
   apiURLColors,
+  apiURLFilteredProducts,
   apiURLProductType,
   apiURLProducts,
 } from "@/utility/baseExports";
@@ -21,8 +22,19 @@ export const metadata = {
   description: "welcome to our demo store for selling bags and shoes",
 };
 
-export async function GetProducts(): Promise<DocumentData[]> {
+export async function GetProducts(): Promise<Product[]> {
   const productsResponse = await fetch(apiURLProducts);
+  const data = await productsResponse.json();
+
+  return data;
+}
+
+export async function GetFilteredProducts(
+  filterParams: string
+): Promise<Product[]> {
+  if (filterParams === "?" || !filterParams) return await GetProducts();
+
+  const productsResponse = await fetch(apiURLFilteredProducts + filterParams);
   const data = await productsResponse.json();
 
   return data;

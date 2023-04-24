@@ -2,43 +2,69 @@
 import { DocumentData } from "firebase/firestore";
 import ProductCard from "./ProductCard";
 import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IconButton from "@/components/buttons/IconButton";
+import { useAppSelector } from "@/customHooks/storeHooks";
+import { GetFilteredProducts } from "@/app/layout";
+import { Product } from "@/utility/CustomTypes";
 
-const ProductsContainer = ({
-  productsData,
-}: {
-  productsData: DocumentData[];
-}) => {
-  // console.log(productsData);
-  //products from database
-  // const productsData = await getProducts();
+const ProductsContainer = () => {
+  const filterValues = useAppSelector((state) => state.SelectPanelSlice);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
-  //pagination data
   const productsPerPage = 8;
-  const numPages = Math.ceil(productsData.length / productsPerPage);
+  const numPages = Math.ceil(filteredProducts.length / productsPerPage);
   const [currentPage, setCurrentPage] = useState(1);
 
   const pagClickHandler = (pageNo: number) => {
     setCurrentPage(pageNo);
   };
 
-  const productsDisplay = productsData.slice(
+  const productsDisplay = filteredProducts.slice(
     (currentPage - 1) * productsPerPage,
     currentPage * productsPerPage
   );
 
-  // console.log(productsData);
+  useEffect(() => {
+    const filterProducts = async () => {
+      let params: string = "?";
+      filterValues.forEach((filter) => {
+        if (filter.categoryKey === "priceRange") {
+          const prices = filter.value.split("-");
+          params += `${params.length > 1 ? "&" : ""}from=${prices[0].slice(1)}`;
+          params += `${params.length > 1 ? "&" : ""}to=${prices[1].slice(1)}`;
+        } else {
+          params += `${params.length > 1 ? "&" : ""}${filter.categoryKey}=${
+            filter.value
+          }`;
+        }
+      });
+      console.log(params);
+      const products = await GetFilteredProducts(params);
+      setFilteredProducts(products);
+      console.log("ARRR", products);
+    };
+    filterProducts();
+    // console.log(filterProducts());
+  }, [filterValues]);
 
   return (
     <div>
+      {filteredProducts.length === 0 ? "Loading..." : ""}
       <ul className="mx-auto mb-24 grid gap-x-6 gap-y-12 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {productsDisplay.map((product) => (
-          <li key={product.name}>
+          <li key={product.id}>
             <ProductCard
-              name={product.name}
-              price={product.price}
-              color={product.color}
+              name={product.attributes.name}
+              price={product.attributes.price}
+              color={
+                product.attributes.colors[
+                  Object.keys(product.attributes.colors)[0]
+                ]
+              }
+              quatity={product.attributes.quantity}
+              onSale={product.attributes.onSale}
+              salePrice={product.attributes.salePrice}
             />
           </li>
         ))}
@@ -53,18 +79,19 @@ const ProductsContainer = ({
             />
           )}
         </li>
-        {Array.from({ length: numPages }, (_, i) => i + 1).map((pageNum) => (
-          <li
-            key={pageNum}
-            className={`hover:border-b ${
-              currentPage === pageNum ? "border-b border-black" : ""
-            }`}
-          >
-            <button className="px-8" onClick={() => pagClickHandler(pageNum)}>
-              {pageNum}
-            </button>
-          </li>
-        ))}
+        {numPages > 1 &&
+          Array.from({ length: numPages }, (_, i) => i + 1).map((pageNum) => (
+            <li
+              key={pageNum}
+              className={`hover:border-b ${
+                currentPage === pageNum ? "border-b border-black" : ""
+              }`}
+            >
+              <button className="px-8" onClick={() => pagClickHandler(pageNum)}>
+                {pageNum}
+              </button>
+            </li>
+          ))}
         <li>
           {" "}
           {currentPage < numPages && (

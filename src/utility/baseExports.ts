@@ -3,8 +3,14 @@ const baseImageUrl =
 
 export { baseImageUrl };
 
+const siteUrl = "http://127.0.0.1:1337";
+export { siteUrl };
+
 const apiURLProducts = "http://localhost:3000/api/products";
 export { apiURLProducts };
+
+const apiURLFilteredProducts = "http://localhost:3000/api/filters/products";
+export { apiURLFilteredProducts };
 
 const apiURLAvailablity = "http://localhost:3000/api/filters/availability";
 export { apiURLAvailablity };
@@ -23,3 +29,12 @@ const sortingDropDownValues = {
 };
 
 export { sortingDropDownValues };
+
+const filterSortingStateTypes = {
+  checkbox: "checkbox",
+  priceRange: "priceRange",
+  dropDown: "dropDown",
+};
+
+export { filterSortingStateTypes };
+//http://localhost:1337/admin/
