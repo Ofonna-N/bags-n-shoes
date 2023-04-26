@@ -1,5 +1,4 @@
 "use client";
-import { DocumentData } from "firebase/firestore";
 import ProductCard from "./ProductCard";
 import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from "react-icons/ai";
 import { useEffect, useState } from "react";
@@ -10,6 +9,12 @@ import { Product } from "@/utility/CustomTypes";
 
 const ProductsContainer = () => {
   const filterValues = useAppSelector((state) => state.SelectPanelSlice);
+  const sortValues = useAppSelector(
+    (state) => state.SortingDropdownSlice.value
+  );
+  const categoryFilterSelection = useAppSelector(
+    (state) => state.CategoryFilterSlice.category
+  );
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   const productsPerPage = 8;
@@ -28,6 +33,11 @@ const ProductsContainer = () => {
   useEffect(() => {
     const filterProducts = async () => {
       let params: string = "?";
+      if (categoryFilterSelection && categoryFilterSelection !== "products") {
+        params += `category=${categoryFilterSelection}&`;
+      }
+
+      params += `sort=${sortValues}&`;
       filterValues.forEach((filter) => {
         if (filter.categoryKey === "priceRange") {
           const prices = filter.value.split("-");
@@ -39,14 +49,15 @@ const ProductsContainer = () => {
           }`;
         }
       });
-      console.log(params);
+      // console.log(params);
       const products = await GetFilteredProducts(params);
       setFilteredProducts(products);
-      console.log("ARRR", products);
+      // console.log("ARRR", products);
     };
     filterProducts();
+    setCurrentPage(1);
     // console.log(filterProducts());
-  }, [filterValues]);
+  }, [filterValues, sortValues, categoryFilterSelection]);
 
   return (
     <div>

@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export type ProductsFilter = { key: string; count: number };
 
 type ProductColors = {
@@ -48,5 +50,32 @@ export type Product = {
         };
       };
     };
+  };
+};
+
+export type Category = {
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    extention: null;
+    products: {
+      data: Product[];
+    };
+    subcategories: {
+      data: SubCategory[];
+    };
+  };
+};
+
+export type SubCategory = {
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
   };
 };

@@ -3,11 +3,12 @@ import FilterSortingBar from "./components/FilteraAndSorting/FilterSortingBar";
 import FilterSortingSelectPanel from "./components/FilteraAndSorting/FilterSortingSelectPanel";
 import ProductsContainerServe from "./components/product/ProductsContainerServe";
 import { Suspense } from "react";
+import ProductsPageTitle from "./components/product/ProductsPageTitle";
 
 const ProductsPage = async () => {
   return (
     <Container>
-      <h2 className="text-[4rem] my-12">Products</h2>
+      <ProductsPageTitle />
       {/** @ts-expect-error  Async Server Component*/}
       <FilterSortingBar />
       <FilterSortingSelectPanel />

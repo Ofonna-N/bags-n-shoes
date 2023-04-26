@@ -6,10 +6,10 @@ import Container from "./components/containers/Container";
 import MenuSidePanel from "./components/navbar/panels/MenuSidePanel";
 import MenuSidePanelWrapper from "./components/panels/MenuSidePanelWrapper";
 // import FilterSortingSideMenuOverlay from "./products/components/panels/FilterSortingSideMenuOverlay";
-import { DocumentData } from "firebase/firestore";
-import { Product, ProductsFilter } from "@/utility/CustomTypes";
+import { Category, Product, ProductsFilter } from "@/utility/CustomTypes";
 import {
   apiURLAvailablity,
+  apiURLCategories,
   apiURLColors,
   apiURLFilteredProducts,
   apiURLProductType,
@@ -25,6 +25,12 @@ export const metadata = {
 export async function GetProducts(): Promise<Product[]> {
   const productsResponse = await fetch(apiURLProducts);
   const data = await productsResponse.json();
+
+  return data;
+}
+export async function GetCategories(): Promise<Category[]> {
+  const categoriesResponse = await fetch(apiURLCategories);
+  const data = await categoriesResponse.json();
 
   return data;
 }
@@ -66,6 +72,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const categoryPromise = GetCategories();
+
   return (
     <html lang="en" className={`${assistant.className}`}>
       <AppProvider>
@@ -82,7 +90,7 @@ export default function RootLayout({
             <div className="relative">
               {children}
               <MenuSidePanelWrapper isLeft={true} isNavMenu={true}>
-                <MenuSidePanel />
+                <MenuSidePanel categoriesResponse={categoryPromise} />
               </MenuSidePanelWrapper>
             </div>
             <FilterSortingSideMenuOverlay />

@@ -15,6 +15,7 @@ const Navbar = () => {
           className="w-[70px] md:w-[80px] lg:w-[90px]"
         />
       </div>
+      {/**@ts-expect-error Async Server Component*/}
       <CategoryBtnsContainer />
       <div className="flex justify-end lg:grow ">
         <NavBarRightSideWrapper />

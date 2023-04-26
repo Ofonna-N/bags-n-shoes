@@ -1,6 +1,5 @@
 import { Product, ProductsFilter } from "@/utility/CustomTypes";
 import { apiURLProducts } from "@/utility/baseExports";
-import { DocumentData } from "firebase/firestore";
 import { NextResponse } from "next/server";
 
 export async function GET() {

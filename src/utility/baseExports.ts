@@ -9,6 +9,9 @@ export { siteUrl };
 const apiURLProducts = "http://localhost:3000/api/products";
 export { apiURLProducts };
 
+const apiURLCategories = "http://localhost:3000/api/categories";
+export { apiURLCategories };
+
 const apiURLFilteredProducts = "http://localhost:3000/api/filters/products";
 export { apiURLFilteredProducts };
 
