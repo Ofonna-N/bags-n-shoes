@@ -11,7 +11,7 @@ export async function GET() {
     },
   });
   const responseJson = await productsResponse.json();
-  const products = responseJson.data;
+  // const products = responseJson.data;
 
-  return NextResponse.json(products);
+  return NextResponse.json(responseJson);
 }

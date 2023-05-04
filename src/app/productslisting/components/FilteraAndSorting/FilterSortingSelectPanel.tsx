@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect } from "react";
 import SelectBadge from "./SelectBadge";
 import { useAppDispatch, useAppSelector } from "@/customHooks/storeHooks";
 import { filterSortingStateTypes } from "@/utility/baseExports";
@@ -19,9 +19,20 @@ import {
 
 const FilterSortingSelectPanel = () => {
   const seletBadges = useAppSelector((state) => state.SelectPanelSlice);
+  const searchMenuFilter = useAppSelector(
+    (state) => state.SearchFilterSlice.search
+  );
+  const categoryFilter = useAppSelector(
+    (state) => state.CategoryFilterSlice.category
+  );
   const dispach = useAppDispatch();
 
   // const [badges, setBadges] = useState<string[]>(["bags", "low-high"]);
+  const clearBadges = () => {
+    seletBadges.forEach((badge) => {
+      deleteBadge(badge.key, badge.type, badge.categoryKey);
+    });
+  };
 
   const deleteBadge = (key: string, type: string, categoryKey: string) => {
     switch (type) {
@@ -59,6 +70,16 @@ const FilterSortingSelectPanel = () => {
     //setBadges((prev) => prev.filter((value) => value !== id));
   };
 
+  useEffect(() => {
+    if (searchMenuFilter) {
+      clearBadges();
+    }
+  }, [searchMenuFilter]);
+
+  useEffect(() => {
+    clearBadges();
+  }, [categoryFilter]);
+
   return (
     <ul className="py-[1.3rem] px-5 mb-6 flex items-center flex-wrap gap-4 text-[1.1rem]">
       {seletBadges.map((badge) => (
@@ -74,11 +95,7 @@ const FilterSortingSelectPanel = () => {
       {seletBadges.length > 0 && (
         <button
           className="border-b-[2px] border-zinc-700"
-          onClick={() => {
-            seletBadges.forEach((badge) => {
-              deleteBadge(badge.key, badge.type, badge.categoryKey);
-            });
-          }}
+          onClick={() => clearBadges()}
         >
           Clear All
         </button>

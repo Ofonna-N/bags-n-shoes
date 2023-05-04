@@ -8,7 +8,7 @@ interface Props {
 const BasicBadge: React.FC<Props> = ({ label, className }) => {
   return (
     <span
-      className={`text-white font-light text-[1.15rem] rounded-[20px] px-[1rem] py-[0.25rem] ${
+      className={`text-white font-light text-[1.2rem] rounded-[20px] px-[1rem] py-[0.25rem] align-middle ${
         className || "bg-slate-800"
       }`}
     >

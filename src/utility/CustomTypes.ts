@@ -5,6 +5,19 @@ export type ProductsFilter = { key: string; count: number };
 type ProductColors = {
   [key: string]: string;
 };
+
+export type ProductsWithMeta = {
+  data: Product[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+};
+
 export type Product = {
   id: string;
   attributes: {
@@ -35,7 +48,9 @@ export type Product = {
           updatedAt: string;
           publishedAt: string;
 
-          extension: {};
+          extention: {
+            sizes?: string[];
+          };
         };
       };
     };
@@ -78,4 +93,16 @@ export type SubCategory = {
     updatedAt: string;
     publishedAt: string;
   };
+};
+
+export type CartItem = {
+  id: string;
+  name: string;
+  imgSrc: string;
+  price: number;
+  salePrice: number;
+  color: string;
+  size?: string | null;
+  quantity: number;
+  total: number;
 };

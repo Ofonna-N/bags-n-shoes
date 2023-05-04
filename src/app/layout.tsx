@@ -1,3 +1,4 @@
+"use-server";
 import Navbar from "./components/navbar/Navbar";
 import { assistant } from "./components/Fonts";
 import "./globals.css";
@@ -6,66 +7,18 @@ import Container from "./components/containers/Container";
 import MenuSidePanel from "./components/navbar/panels/MenuSidePanel";
 import MenuSidePanelWrapper from "./components/panels/MenuSidePanelWrapper";
 // import FilterSortingSideMenuOverlay from "./products/components/panels/FilterSortingSideMenuOverlay";
-import { Category, Product, ProductsFilter } from "@/utility/CustomTypes";
-import {
-  apiURLAvailablity,
-  apiURLCategories,
-  apiURLColors,
-  apiURLFilteredProducts,
-  apiURLProductType,
-  apiURLProducts,
-} from "@/utility/baseExports";
+
 import FilterSortingSideMenuOverlay from "./productslisting/components/panels/FilterSortingSideMenuOverlay";
+import { GetCategories } from "@/utility/AsyncFetchFunctions";
+import TestClientComponent from "./productslisting/components/FilteraAndSorting/TestClientComponent";
+import ToggleLister from "@/components/Listeners/ToggleLister";
+import SearchBarModal from "./components/searchbar/SearchBarModal";
+import Footer from "./components/Footer/Footer";
 
 export const metadata = {
   title: 'Bags "n" Shoes',
   description: "welcome to our demo store for selling bags and shoes",
 };
-
-export async function GetProducts(): Promise<Product[]> {
-  const productsResponse = await fetch(apiURLProducts);
-  const data = await productsResponse.json();
-
-  return data;
-}
-export async function GetCategories(): Promise<Category[]> {
-  const categoriesResponse = await fetch(apiURLCategories);
-  const data = await categoriesResponse.json();
-
-  return data;
-}
-
-export async function GetFilteredProducts(
-  filterParams: string
-): Promise<Product[]> {
-  if (filterParams === "?" || !filterParams) return await GetProducts();
-
-  const productsResponse = await fetch(apiURLFilteredProducts + filterParams);
-  const data = await productsResponse.json();
-
-  return data;
-}
-
-export async function GetColorFilters(): Promise<ProductsFilter[]> {
-  const response = await fetch(apiURLColors);
-  const colorsFilter: ProductsFilter[] = await response.json();
-
-  return colorsFilter;
-}
-
-export async function GetProductTypes(): Promise<ProductsFilter[]> {
-  const response = await fetch(apiURLProductType);
-  const producttypeFilter: ProductsFilter[] = await response.json();
-
-  return producttypeFilter;
-}
-
-export async function GetProductsAvailability(): Promise<ProductsFilter[]> {
-  const response = await fetch(apiURLAvailablity);
-  const availabilityFilter: ProductsFilter[] = await response.json();
-
-  return availabilityFilter;
-}
 
 export default function RootLayout({
   children,
@@ -78,9 +31,12 @@ export default function RootLayout({
     <html lang="en" className={`${assistant.className}`}>
       <AppProvider>
         <body>
-          <div className="text-center py-4 shadow-sm text-[1.2rem]">
+          <div className="text-center py-4 shadow-sm text-[1.2rem] whitespace-nowrap">
             Free shipping available on all orders!
           </div>
+          {/**@ts-expect-error Async Server Component*/}
+          <SearchBarModal />
+          {/* <TestClientComponent /> */}
           <div className="grid grid-cols-1">
             <div className="border-y">
               <Container>
@@ -95,6 +51,8 @@ export default function RootLayout({
             </div>
             <FilterSortingSideMenuOverlay />
           </div>
+          <ToggleLister />
+          <Footer />
         </body>
       </AppProvider>
     </html>

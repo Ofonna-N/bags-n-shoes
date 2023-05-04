@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { Product } from "@/utility/CustomTypes";
-import { sortingDropDownValues } from "@/utility/baseExports";
+import { siteUrl, sortingDropDownValues } from "@/utility/baseExports";
 type Params = {
   [key: string]: string;
 };
@@ -15,6 +15,28 @@ export async function GET(request: NextRequest) {
   const priceTo = searchParams.get("to");
   const sort = searchParams.get("sort");
   const categoryFilter = searchParams.get("category");
+  const searchFilter = searchParams.get("search");
+  const maxCount = searchParams.get("maxCount");
+  const product = searchParams.get("product");
+  const excluded = searchParams.getAll("exclude");
+
+  if (excluded.length > 0) {
+    excluded.forEach((exclude) => {
+      params.push(`filters[name][$ne]=${exclude}`);
+    });
+  }
+
+  if (product) {
+    params.push(`filters[id][$eq]=${product}`);
+  }
+
+  if (maxCount) {
+    params.push(`pagination[pageSize]=${maxCount}`);
+  }
+
+  if (searchFilter) {
+    params.push(`filters[name][$contains]=${searchFilter}`);
+  }
 
   if (categoryFilter) {
     params.push(
@@ -52,16 +74,16 @@ export async function GET(request: NextRequest) {
   if (sort) {
     switch (sort) {
       case sortingDropDownValues.name_asc:
-        params.push("sort=name:asc");
+        params.push("sort[0]=name:asc");
         break;
       case sortingDropDownValues.name_des:
-        params.push("sort=name:desc");
+        params.push("sort[0]=name:desc");
         break;
       case sortingDropDownValues.price_asc:
-        params.push("sort=price:asc");
+        params.push("sort[0]=price:asc");
         break;
       case sortingDropDownValues.price_desc:
-        params.push("sort=price:desc");
+        params.push("sort[0]=price:desc");
         break;
 
       default:
@@ -69,7 +91,7 @@ export async function GET(request: NextRequest) {
     }
   }
   const productsResponse = await fetch(
-    `http://127.0.0.1:1337/api/products?populate=*&${params.join("&")}`,
+    `${siteUrl}/api/products?populate=*&${params.join("&")}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.API_TOKEN}`,

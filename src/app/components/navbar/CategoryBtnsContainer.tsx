@@ -1,4 +1,5 @@
-import { GetCategories } from "@/app/layout";
+// import { GetCategories } from "@/app/layout";
+import { GetCategories } from "@/utility/AsyncFetchFunctions";
 import NavBarMenuDropdwn from "./NavBarMenuDropdwn";
 
 const CategoryBtnsContainer = async () => {

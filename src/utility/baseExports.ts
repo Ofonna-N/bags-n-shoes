@@ -41,3 +41,20 @@ const filterSortingStateTypes = {
 
 export { filterSortingStateTypes };
 //http://localhost:1337/admin/
+
+export function getRandomSort() {
+  const rand = Math.floor(Math.random() * 4) + 1;
+  switch (rand) {
+    case 1:
+      return sortingDropDownValues.name_asc;
+    case 2:
+      return sortingDropDownValues.name_des;
+    case 3:
+      return sortingDropDownValues.price_asc;
+    case 4:
+      return sortingDropDownValues.price_desc;
+
+    default:
+      return sortingDropDownValues.name_asc;
+  }
+}

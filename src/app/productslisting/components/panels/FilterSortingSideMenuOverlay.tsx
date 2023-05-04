@@ -10,9 +10,14 @@ import { useEffect, useState } from "react";
 import { ProductsFilter } from "@/utility/CustomTypes";
 import {
   GetColorFilters,
-  GetProductTypes,
   GetProductsAvailability,
-} from "@/app/layout";
+  GetProductTypes,
+} from "@/utility/AsyncFetchFunctions";
+// import {
+//   GetColorFilters,
+//   GetProductTypes,
+//   GetProductsAvailability,
+// } from "@/app/layout";
 
 const FilterSortingSideMenuOverlay: React.FC = () => {
   const [filters, setFilters] = useState<ProductsFilter[][] | undefined>();
@@ -34,7 +39,6 @@ const FilterSortingSideMenuOverlay: React.FC = () => {
   };
 
   useEffect(() => {
-    document.body.style.overflowY = `${!toggled ? "visible" : "hidden"}`;
     if (toggled) {
       const timeout = setTimeout(() => {
         dispach(toggleFilterSideMenu({ toggle: true }));

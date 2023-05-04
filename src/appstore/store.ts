@@ -5,6 +5,8 @@ import PriceRangeFilterSlice from "./slices/PriceRangeFilterSlice";
 import SortingDropdownSlice from "./slices/SortingDropdownSlice";
 import SelectPanelSlice from "./slices/SelectPanelSlice";
 import CategoryFilterSlice from "./slices/CategoryFilterSlice";
+import SearchFilterSlice from "./slices/SearchFilterSlice";
+import CartSlice from "./slices/CartSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
     SortingDropdownSlice,
     SelectPanelSlice,
     CategoryFilterSlice,
+    SearchFilterSlice,
+    CartSlice,
   },
 });
 

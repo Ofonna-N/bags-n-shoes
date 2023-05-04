@@ -6,6 +6,11 @@ import { SubCategory } from "@/utility/CustomTypes";
 import { useAppDispatch } from "@/customHooks/storeHooks";
 import MenuSelectBtn from "./MenuSelectBtn";
 import { updateCateryFilter } from "@/appstore/slices/CategoryFilterSlice";
+import {
+  setSearchFilter,
+  toggleSearchFilter,
+} from "@/appstore/slices/SearchFilterSlice";
+import { useRouter } from "next/navigation";
 
 interface Props {
   label: string;
@@ -16,6 +21,7 @@ const NavBarMenuDropdwn: React.FC<Props> = ({ label, subCategory }) => {
   const [toggleDropdwn, setToggleDropdwn] = useState(false);
 
   const dispach = useAppDispatch();
+  const router = useRouter();
 
   const onMenuBtnClicked = () => {
     setToggleDropdwn((prev) => !prev);
@@ -23,6 +29,9 @@ const NavBarMenuDropdwn: React.FC<Props> = ({ label, subCategory }) => {
 
   const menuSelectBtnClicked = (select: string) => {
     dispach(updateCateryFilter({ category: select }));
+    dispach(toggleSearchFilter({ toggle: false }));
+    dispach(setSearchFilter({ search: "" }));
+    router.push("/productslisting");
   };
 
   return (

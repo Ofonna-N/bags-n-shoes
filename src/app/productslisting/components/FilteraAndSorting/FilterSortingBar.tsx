@@ -10,7 +10,13 @@ import {
   GetProductTypes,
   GetProducts,
   GetProductsAvailability,
-} from "@/app/layout";
+} from "@/utility/AsyncFetchFunctions";
+// import {
+//   GetColorFilters,
+//   GetProductTypes,
+//   GetProducts,
+//   GetProductsAvailability,
+// } from "@/app/layout";
 
 const FilterSortingBar = async () => {
   const colorsPromise = GetColorFilters();

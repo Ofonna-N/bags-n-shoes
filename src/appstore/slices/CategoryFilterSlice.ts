@@ -15,9 +15,14 @@ const categoryFilterSlice = createSlice({
     updateCateryFilter(state, { payload }: { payload: CategorySliceState }) {
       state.category = payload.category;
     },
+    clearCategoryFilter(state) {
+      console.log("clearing category!");
+      state.category = "products";
+    },
   },
 });
 
-export const { updateCateryFilter } = categoryFilterSlice.actions;
+export const { updateCateryFilter, clearCategoryFilter } =
+  categoryFilterSlice.actions;
 
 export default categoryFilterSlice.reducer;

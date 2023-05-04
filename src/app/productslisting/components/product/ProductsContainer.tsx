@@ -4,8 +4,12 @@ import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import IconButton from "@/components/buttons/IconButton";
 import { useAppSelector } from "@/customHooks/storeHooks";
-import { GetFilteredProducts } from "@/app/layout";
+// import { GetFilteredProducts } from "@/app/layout";
 import { Product } from "@/utility/CustomTypes";
+import {
+  GetFilteredProducts,
+  GetProducts,
+} from "@/utility/AsyncFetchFunctions";
 
 const ProductsContainer = () => {
   const filterValues = useAppSelector((state) => state.SelectPanelSlice);
@@ -14,6 +18,9 @@ const ProductsContainer = () => {
   );
   const categoryFilterSelection = useAppSelector(
     (state) => state.CategoryFilterSlice.category
+  );
+  const searchFilterValue = useAppSelector(
+    (state) => state.SearchFilterSlice.search
   );
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
@@ -32,7 +39,8 @@ const ProductsContainer = () => {
 
   useEffect(() => {
     const filterProducts = async () => {
-      let params: string = "?";
+      let params: string = "";
+      if (searchFilterValue) params += `search=${searchFilterValue}&`;
       if (categoryFilterSelection && categoryFilterSelection !== "products") {
         params += `category=${categoryFilterSelection}&`;
       }
@@ -51,31 +59,36 @@ const ProductsContainer = () => {
       });
       // console.log(params);
       const products = await GetFilteredProducts(params);
+      // const products = await GetProducts();
+      // console.log(products, "products container", params, "params");
+
       setFilteredProducts(products);
       // console.log("ARRR", products);
     };
     filterProducts();
     setCurrentPage(1);
     // console.log(filterProducts());
-  }, [filterValues, sortValues, categoryFilterSelection]);
+  }, [filterValues, sortValues, categoryFilterSelection, searchFilterValue]);
 
   return (
-    <div>
+    <div className="relative">
       {filteredProducts.length === 0 ? "Loading..." : ""}
       <ul className="mx-auto mb-24 grid gap-x-6 gap-y-12 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {productsDisplay.map((product) => (
           <li key={product.id}>
             <ProductCard
-              name={product.attributes.name}
-              price={product.attributes.price}
-              color={
-                product.attributes.colors[
-                  Object.keys(product.attributes.colors)[0]
-                ]
-              }
-              quatity={product.attributes.quantity}
-              onSale={product.attributes.onSale}
-              salePrice={product.attributes.salePrice}
+              product={product}
+              // id={product.id}
+              // name={product.attributes.name}
+              // price={product.attributes.price}
+              // color={
+              //   product.attributes.colors[
+              //     Object.keys(product.attributes.colors)[0]
+              //   ]
+              // }
+              // quatity={product.attributes.quantity}
+              // onSale={product.attributes.onSale}
+              // salePrice={product.attributes.salePrice}
             />
           </li>
         ))}

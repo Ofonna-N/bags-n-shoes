@@ -7,4 +7,12 @@
     font-size: 62.5%;
     /* background-color: #00000063; */
   }
+  body {
+    font-size: 1.4rem;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    /* margin: 0; */
+  }
 }

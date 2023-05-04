@@ -12,10 +12,6 @@ const MenuToggler = () => {
     (state) => state.SideMenuToggleSlice.NavMenutoggled.toggled
   );
 
-  useEffect(() => {
-    document.body.style.overflowY = `${sideMenuToggled ? "hidden" : "visible"}`;
-  }, [sideMenuToggled]);
-
   return (
     <button
       onClick={() => {
