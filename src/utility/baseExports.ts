@@ -6,6 +6,9 @@ export { baseImageUrl };
 const siteUrl = "http://127.0.0.1:1337";
 export { siteUrl };
 
+const siteUrlText = "http://localhost:3000";
+export { siteUrlText };
+
 const apiURLProducts = "http://localhost:3000/api/products";
 export { apiURLProducts };
 

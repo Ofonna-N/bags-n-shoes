@@ -7,7 +7,7 @@ import { siteUrl } from "@/utility/baseExports";
 export async function GET() {
   const productsResponse = await fetch(`${siteUrl}/api/products?populate=*`, {
     headers: {
-      Authorization: `Bearer ${process.env.API_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
     },
   });
   const responseJson = await productsResponse.json();

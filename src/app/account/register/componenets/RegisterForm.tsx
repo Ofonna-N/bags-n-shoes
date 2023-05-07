@@ -1,28 +1,101 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TextInput from "../../components/TextInput";
 import EmptyBtn from "@/app/productslisting/components/product/EmptyBtn";
 import AccountForm from "../../components/AccountForm";
+import FormErrorModal from "../../components/FormErrorModal";
+import { siteUrlText } from "@/utility/baseExports";
+import { useRouter } from "next/navigation";
+import useValidAccount from "@/customHooks/useValidAccount";
+import {
+  CreateUserWithEmailAndPassword,
+  SignInWithEmailAndPassword,
+} from "@/firebase/appAuth";
 
 const RegisterForm = () => {
-  const onSubmitForm = () => {
-    console.log("Register user");
+  const router = useRouter();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [errorMsg, setErrorMsg] = useState("");
+  const validAccount = useValidAccount();
+  const onSubmitForm = async () => {
+    // console.log("Register user");
+    try {
+      // const register = await fetch(`${siteUrlText}/api/auth/register`, {
+      //   method: "POST",
+      //   body: JSON.stringify({ firstName, lastName, email, password }),
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // });
+
+      const register = await CreateUserWithEmailAndPassword(email, password);
+
+      if (register.ok) {
+        // console.log("Registered Account!");
+        const login = await SignInWithEmailAndPassword(email, password);
+        router.push("account/login");
+      } else {
+        // console.log(register);
+        if (register.msg === "Firebase: Error (auth/email-already-in-use).") {
+          setErrorMsg("Account already exists, proceed to log in");
+        } else {
+          setErrorMsg("Error: Check connection");
+        }
+      }
+    } catch (error) {
+      // console.log(error, "Error");
+      setErrorMsg("Problem creating account, check network connection");
+    }
   };
 
+  useEffect(() => {
+    if (validAccount) {
+      router.push("/account");
+    } else {
+      // console.log("log in");
+    }
+  }, [validAccount]);
   return (
-    <AccountForm submitFormHandler={() => {}}>
-      <TextInput label="First name" type="text" />
-      <TextInput label="Last name" type="text" />
-      <TextInput label="Email" type="email" />
-      <TextInput label="Password" type="password" />
-      <span className="block sm:w-[15rem] mx-auto">
-        <EmptyBtn
-          label="Create"
-          className="bg-black text-white"
-          clickHandler={onSubmitForm}
+    <>
+      <FormErrorModal errorMsg={errorMsg} />
+      <AccountForm submitFormHandler={() => onSubmitForm()}>
+        <TextInput
+          label="First name"
+          type="text"
+          value={firstName}
+          changeEvtHandler={(e) => setFirstName(e.target.value)}
         />
-      </span>
-    </AccountForm>
+        <TextInput
+          label="Last name"
+          type="text"
+          value={lastName}
+          changeEvtHandler={(e) => setLastName(e.target.value)}
+        />
+        <TextInput
+          label="Email"
+          type="email"
+          value={email}
+          changeEvtHandler={(e) => setEmail(e.target.value)}
+        />
+        <TextInput
+          label="Password"
+          type="password"
+          value={password}
+          changeEvtHandler={(e) => setPassword(e.target.value)}
+        />
+        <span className="block sm:w-[15rem] mx-auto">
+          <EmptyBtn
+            label="Create"
+            className="bg-black text-white"
+            // clickHandler={onSubmitForm}
+          />
+        </span>
+      </AccountForm>
+    </>
   );
 };
 

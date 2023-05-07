@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "store_users",
+  "info": {
+    "singularName": "store-user",
+    "pluralName": "store-users",
+    "displayName": "StoreUser",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

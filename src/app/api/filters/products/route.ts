@@ -94,7 +94,7 @@ export async function GET(request: NextRequest) {
     `${siteUrl}/api/products?populate=*&${params.join("&")}`,
     {
       headers: {
-        Authorization: `Bearer ${process.env.API_TOKEN}`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
       },
     }
   );

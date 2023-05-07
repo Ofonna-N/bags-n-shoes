@@ -4,18 +4,28 @@ import React from "react";
 type Props = {
   label: string;
   type: string;
+  value: string;
+  changeEvtHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
   // attributes?: { [key: string]: string };
 };
 
-const TextInput: React.FC<Props> = ({ label, type }) => {
+const TextInput: React.FC<Props> = ({
+  label,
+  type,
+  value,
+  changeEvtHandler,
+}) => {
   return (
     <div className="h-[5rem] relative mb-[2rem]">
       <label>
         <input
           type={type}
+          required
+          value={value}
           placeholder=" "
           className="peer w-full pl-[2rem] pr-[5rem] pt-[1.5rem] h-full text-[1.6rem] 
         focus:border-black focus:border-[1px] focus:ring-black focus:shadow-black"
+          onChange={changeEvtHandler}
         />
         <span
           className="absolute left-[2rem] text-[1.2rem] top-[15%] translate-y-[0] 

@@ -7,6 +7,7 @@ import SelectPanelSlice from "./slices/SelectPanelSlice";
 import CategoryFilterSlice from "./slices/CategoryFilterSlice";
 import SearchFilterSlice from "./slices/SearchFilterSlice";
 import CartSlice from "./slices/CartSlice";
+import UserSlice from "./slices/UserSlice";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     CategoryFilterSlice,
     SearchFilterSlice,
     CartSlice,
+    UserSlice,
   },
 });
 

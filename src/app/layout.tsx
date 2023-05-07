@@ -14,6 +14,9 @@ import TestClientComponent from "./productslisting/components/FilteraAndSorting/
 import ToggleLister from "@/components/Listeners/ToggleLister";
 import SearchBarModal from "./components/searchbar/SearchBarModal";
 import Footer from "./components/Footer/Footer";
+import ClientSideInitializers from "@/components/initializers/ClientSideInitializers";
+
+// import { auth } from "@/firebase/firebaseApp";
 
 export const metadata = {
   title: 'Bags "n" Shoes',
@@ -26,11 +29,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const categoryPromise = GetCategories();
-
+  // console.log(auth);
   return (
     <html lang="en" className={`${assistant.className}`}>
       <AppProvider>
         <body>
+          <ToggleLister />
+          {/* <ClientSideInitializers /> */}
           <div className="text-center py-4 shadow-sm text-[1.2rem] whitespace-nowrap">
             Free shipping available on all orders!
           </div>
@@ -51,7 +56,6 @@ export default function RootLayout({
             </div>
             <FilterSortingSideMenuOverlay />
           </div>
-          <ToggleLister />
           <Footer />
         </body>
       </AppProvider>

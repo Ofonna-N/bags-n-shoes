@@ -1,3 +1,4 @@
+import { Unsubscribe } from "firebase/auth";
 import { type } from "os";
 
 export type ProductsFilter = { key: string; count: number };
@@ -105,4 +106,20 @@ export type CartItem = {
   size?: string | null;
   quantity: number;
   total: number;
+};
+
+export type LoginRequestBody = {
+  email: string;
+  password: string;
+};
+export type RegisterRequestBody = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+};
+
+export type UserValidationPromise = {
+  ok: boolean;
+  unsubscribe: Unsubscribe;
 };
