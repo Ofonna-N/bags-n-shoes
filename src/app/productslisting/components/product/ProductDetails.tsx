@@ -11,6 +11,7 @@ import { baseImageUrl } from "@/utility/baseExports";
 import { useAppDispatch } from "@/customHooks/storeHooks";
 import { addCartItem } from "@/appstore/slices/CartSlice";
 import ImageGallery from "./ImageGallery";
+import AddedToCartPopUp from "./AddedToCartPopUp";
 
 type Props = {
   product: Product;
@@ -60,15 +61,15 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
   // console.log(selectedImgColor, "BRr");
 
   return (
-    <div className="bg-orange-700">
+    <div className="">
       <ImageGallery
         images={Object.values(product.attributes.colors).flatMap((arr) => arr)}
         selectedColor={product.attributes.colors[selectedImgColor]}
       />
-      <div className="flex  bg-zinc-800 relative mb-[3rem]">
+      <div className="flex   relative mb-[3rem]">
         {/* Product Images */}
-        <ul className="bg-orange-500 gap-2 grow-1 md:grid md:grid-cols-1 xl:grid-cols-2 h-min overflow-hidden hidden">
-          <li className="w-full  bg-blue-700 col-span-1 xl:col-span-2">
+        <ul className=" gap-2 grow-1 md:grid md:grid-cols-1 xl:grid-cols-2 h-min overflow-hidden hidden">
+          <li className="w-full  col-span-1 xl:col-span-2">
             <Image
               width={1024}
               height={1024}
@@ -81,7 +82,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
           {Object.values(product.attributes.colors)
             .flatMap((imgArr) => imgArr)
             .map((colorSrc) => (
-              <li key={colorSrc} className=" bg-blue-800 ">
+              <li key={colorSrc}>
                 <Image
                   width={512}
                   height={512}
@@ -94,7 +95,14 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
             ))}
         </ul>
         {/* Product Details */}
-        <div className="bg-lime-600 flex flex-col gap-[1rem] lg:sticky top-0 h-max px-[2rem] grow-1 shrink-1 md:basis-[80rem] lg:basis-[60rem]">
+        <div className="overflow-hidden flex flex-col gap-[1rem] md:sticky top-0 h-max px-[2rem] grow-1 shrink-1 md:basis-[80rem] lg:basis-[60rem]">
+          {/* carty pop */}
+          <AddedToCartPopUp
+            name={product.attributes.name}
+            color={selectedImgColor}
+            size={selectedSize ? selectedSize : ""}
+            imgSrc={baseImageUrl + product.attributes.colors[selectedImgColor]}
+          />
           <h2 className="text-[5rem] ">{product.attributes.name}</h2>
           <div className="flex items-center gap-4 text-[1.8rem]">
             <h3
@@ -108,7 +116,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
               <h3>${product.attributes.salePrice.toFixed(2)}</h3>
             )}
             {product.attributes.onSale && (
-              <BasicBadge className="bg-blue-600" label="Sale" />
+              <BasicBadge className="" label="Sale" />
             )}
           </div>
           <div>
@@ -118,7 +126,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                 <li key={colorLabel}>
                   <ClickableBadge
                     label={colorLabel}
-                    selectedColor="#000000"
+                    selectedColor="#121212"
                     selected={colorLabel === selectedImgColor}
                     clickHanlder={clickedColorHandler}
                   />
@@ -158,7 +166,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
           <div className="flex flex-col gap-6 text-[1.6rem]">
             <EmptyBtn
               label="Add to cart"
-              className="border-white border"
+              className="border-base border"
               disabled={product.attributes.quantity <= 0}
               clickHandler={() => {
                 dispach(
@@ -182,11 +190,11 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
             />
             <EmptyBtn
               label="Buy it now"
-              className="text-white bg-black"
+              className="text-white bg-base"
               disabled={product.attributes.quantity <= 0}
             />
           </div>
-          <div className="w-full bg-red-500 text-[1.6rem] leading-[3rem]">
+          <div className="w-full text-base2 text-[1.6rem] leading-[3rem]">
             <p className="break-all">{product.attributes.description}</p>
           </div>
           <Accordion

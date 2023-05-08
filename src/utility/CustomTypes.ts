@@ -116,10 +116,22 @@ export type RegisterRequestBody = {
   firstName: string;
   lastName: string;
   email: string;
-  password: string;
+};
+
+export type User = {
+  id: number;
+  attributes: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    // createdAt: string;
+    // updatedAt: string;
+    // publishedAt: string;
+  };
 };
 
 export type UserValidationPromise = {
   ok: boolean;
   unsubscribe: Unsubscribe;
+  email: string | null;
 };

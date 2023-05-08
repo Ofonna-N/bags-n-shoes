@@ -3,10 +3,12 @@ import Container from "../components/containers/Container";
 import LogoutForm from "./components/LogoutForm";
 
 import UserAuthenticator from "./components/UserAuthenticator";
+import AccountDetails from "./components/AccountDetails";
 
 const AccountPage = () => {
   // console.log(appAuth.currentUser, "Current User");
   // return null;
+
   return (
     <Container>
       <UserAuthenticator>
@@ -18,9 +20,7 @@ const AccountPage = () => {
             <p>You haven't placed any orders yet.</p>
           </div>
           <div className="">
-            <h3 className="text-[4rem]">Account details</h3>
-            <p>Name</p>
-            <p>USA</p>
+            <AccountDetails />
           </div>
         </div>
       </UserAuthenticator>

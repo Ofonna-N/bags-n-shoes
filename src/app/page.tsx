@@ -1,7 +1,21 @@
+import Link from "next/link";
+import Container from "./components/containers/Container";
+import HeroSection from "./components/layout/HeroSection";
+import FeaturedSection from "./components/layout/FeaturedSection";
+import BackInStockSection from "./components/layout/BackInStockSection";
+import { FaPlay } from "react-icons/fa";
+import VideoSection from "./components/layout/VideoSection";
+import TextPromoSection from "./components/layout/TextPromoSection";
+
 export default function Home() {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <main>
+      <HeroSection />
+      {/* @ts-ignore-error Server Component*/}
+      <FeaturedSection />
+      <BackInStockSection />
+      <VideoSection />
+      <TextPromoSection />
+    </main>
   );
 }

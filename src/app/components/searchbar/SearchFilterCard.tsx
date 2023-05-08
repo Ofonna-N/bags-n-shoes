@@ -16,7 +16,7 @@ const SearchFilterCard: React.FC<Props> = ({
 }) => {
   return (
     <button
-      className="flex px-[1.5rem] py-2 w-full items-center gap-8 hover:bg-slate-600"
+      className="flex px-[1.5rem] py-[15px] w-full items-center gap-8 hover:bg-[#F2F2F2]"
       onClick={clickHandler}
     >
       <div className="relate w-[50px] h-[50px] bg-white">

@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "store_users",
+  "collectionName": "app_users",
   "info": {
-    "singularName": "store-user",
-    "pluralName": "store-users",
-    "displayName": "StoreUser",
-    "description": ""
+    "singularName": "app-user",
+    "pluralName": "app-users",
+    "displayName": "AppUser"
   },
   "options": {
     "draftAndPublish": true

@@ -3,13 +3,26 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --base-color: #121212;
+  }
   html {
     font-size: 62.5%;
     /* background-color: #00000063; */
   }
   body {
     font-size: 1.4rem;
+    color: var(--base-color);
   }
+
+  button {
+    color: var(--base-color);
+  }
+
+  a {
+    color: var(--base-color);
+  }
+
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;

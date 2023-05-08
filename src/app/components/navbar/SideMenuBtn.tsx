@@ -11,7 +11,7 @@ interface Props {
 const SideMenuBtn: React.FC<Props> = ({ label, back, onClicked }) => {
   const regularBtn = (
     <button
-      className="w-full bg-orange-400 hover:bg-slate-600 flex justify-between items-center px-8 py-4 text-[1.6rem]"
+      className="w-full  hover:bg-slate-300 flex justify-between items-center px-8 py-4 text-[1.6rem]"
       onClick={onClicked}
     >
       <span>{label}</span>
@@ -23,7 +23,7 @@ const SideMenuBtn: React.FC<Props> = ({ label, back, onClicked }) => {
 
   const backBtn = (
     <button
-      className="w-full bg-orange-400 hover:bg-slate-600 flex justify-start items-center px-8 py-4 text-[1.3rem]"
+      className="w-full hover:bg-slate-200 flex justify-start items-center px-8 py-4 text-[1.3rem]"
       onClick={onClicked}
     >
       <span className="mr-3">

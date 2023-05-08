@@ -33,7 +33,6 @@ const SearchBarFilter: React.FC<Props> = ({ closeHandler, isMenu }) => {
   const [dropDownFocused, setDropDownFocused] = useState(false);
 
   const inputFocusHandler = (isFocused: boolean) => {
-    // if (dropDownFocused) return;
     setInputFocused(isFocused);
   };
 
@@ -85,14 +84,14 @@ const SearchBarFilter: React.FC<Props> = ({ closeHandler, isMenu }) => {
 
       {(inputFocused || dropDownFocused) && search.length > 0 && (
         <ul
-          className="absolute bg-slate-500 w-full flex flex-col mt-[1px] z-[500]"
+          className="absolute bg-white w-full flex flex-col mt-[1px] z-[500]"
           onMouseEnter={() => dropDownFocusHandler(true)}
           onMouseLeave={() => {
             dropDownFocusHandler(false);
           }}
         >
           {products.length > 0 && (
-            <li className="border-b border-black py-[0.5rem] text-[1.2rem] px-[1.5rem] mb-1">
+            <li className="border-b border-gray-300 py-[0.5rem] text-[1.2rem] px-[1.5rem] mb-1">
               Products
             </li>
           )}
@@ -109,7 +108,7 @@ const SearchBarFilter: React.FC<Props> = ({ closeHandler, isMenu }) => {
               />
             </li>
           ))}
-          <li className="border-t border-black">
+          <li className="border-t border-gray-300">
             <SideMenuBtn
               label={`Go to "${search}"`}
               onClicked={() => {

@@ -42,7 +42,8 @@ const SearchBarModal = () => {
       <div className="relative mt-1">
         <div className="absolute top-0 bottom-[100%] bg-overlay h-[110vh] w-full z-[500]">
           {searchbarToggled && (
-            <div className="p-[3rem] bg-white">
+            // TODO: animate drop down fade
+            <div className="p-[3rem] bg-white animate-dropDown">
               <SearchBarFilter
                 closeHandler={() =>
                   dispach(toggleSearchBarMenuOverlay({ toggle: false }))

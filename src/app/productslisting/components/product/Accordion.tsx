@@ -32,7 +32,7 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
             </div>
           </button>
           {activeIndex === index && (
-            <div className="px-4 py-2 text-[1.4rem] whitespace-pre-line">
+            <div className="px-4 py-2 text-[1.4rem] whitespace-pre-line text-base2">
               {item.content}
             </div>
           )}

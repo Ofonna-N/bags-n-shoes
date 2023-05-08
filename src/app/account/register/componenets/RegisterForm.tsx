@@ -12,6 +12,8 @@ import {
   SignInWithEmailAndPassword,
 } from "@/firebase/appAuth";
 
+import LoadingText from "@/app/components/extras/LoadingText";
+
 const RegisterForm = () => {
   const router = useRouter();
   const [firstName, setFirstName] = useState("");
@@ -20,9 +22,12 @@ const RegisterForm = () => {
   const [password, setPassword] = useState("");
 
   const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setisLoading] = useState(false);
   const validAccount = useValidAccount();
+
   const onSubmitForm = async () => {
     // console.log("Register user");
+    setisLoading(true);
     try {
       // const register = await fetch(`${siteUrlText}/api/auth/register`, {
       //   method: "POST",
@@ -36,6 +41,22 @@ const RegisterForm = () => {
 
       if (register.ok) {
         // console.log("Registered Account!");
+        const createdUserResponse = await fetch(
+          siteUrlText + "/api/auth/register",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              firstName,
+              lastName,
+              email,
+            }),
+          }
+        );
+        const createdUserDB = await createdUserResponse.json();
+        console.log(createdUserDB, "New user created at database!");
         const login = await SignInWithEmailAndPassword(email, password);
         router.push("account/login");
       } else {
@@ -46,9 +67,11 @@ const RegisterForm = () => {
           setErrorMsg("Error: Check connection");
         }
       }
+      setisLoading(false);
     } catch (error) {
-      // console.log(error, "Error");
-      setErrorMsg("Problem creating account, check network connection");
+      console.log((error as Error).message, "Error");
+      setErrorMsg("Problem creating account, check network connections");
+      setisLoading(false);
     }
   };
 
@@ -61,6 +84,11 @@ const RegisterForm = () => {
   }, [validAccount]);
   return (
     <>
+      {isLoading && (
+        <span className="block w-max mx-auto mb-8">
+          <LoadingText label="Please wait..." />
+        </span>
+      )}
       <FormErrorModal errorMsg={errorMsg} />
       <AccountForm submitFormHandler={() => onSubmitForm()}>
         <TextInput
@@ -90,7 +118,8 @@ const RegisterForm = () => {
         <span className="block sm:w-[15rem] mx-auto">
           <EmptyBtn
             label="Create"
-            className="bg-black text-white"
+            className="bg-base text-white"
+            disabled={isLoading}
             // clickHandler={onSubmitForm}
           />
         </span>

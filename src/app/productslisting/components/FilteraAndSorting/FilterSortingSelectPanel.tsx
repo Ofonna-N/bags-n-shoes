@@ -81,7 +81,7 @@ const FilterSortingSelectPanel = () => {
   }, [categoryFilter]);
 
   return (
-    <ul className="py-[1.3rem] px-5 mb-6 flex items-center flex-wrap gap-4 text-[1.1rem]">
+    <ul className=" py-[1.3rem] px-5 mb-6 flex items-center flex-wrap gap-4 text-[1.1rem]">
       {seletBadges.map((badge) => (
         <li key={badge.key}>
           <SelectBadge

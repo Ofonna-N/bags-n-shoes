@@ -15,7 +15,7 @@ const ImageGallery: React.FC<Props> = ({ images, selectedColor }) => {
   const [selectedImg, setSelectedImg] = useState(1);
 
   useEffect(() => {
-    console.log(selectedColor);
+    // console.log(selectedColor);
     if (scrollPanelRef.current) {
       setSelectedImg(1);
       scrollPanelRef.current.scroll({
@@ -26,10 +26,10 @@ const ImageGallery: React.FC<Props> = ({ images, selectedColor }) => {
   }, [selectedColor]);
 
   return (
-    <div className="w-full md:hidden bg-slate-800">
+    <div className="w-full md:hidden ">
       <ul
         ref={scrollPanelRef}
-        className="bg-amber-700 flex overflow-x-hidden snap-x snap-mandatory "
+        className="flex overflow-x-hidden snap-x snap-mandatory "
       >
         <li className="w-full aspect-square shrink-0 p-2 snap-center">
           <Image

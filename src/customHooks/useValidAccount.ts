@@ -19,10 +19,10 @@ const useValidAccount = () => {
         setUnsubscribe(userExists.unsubscribe);
         setValidAccount(true);
         if (userExists.ok) {
-          dispatch(setUserState({ exists: true }));
+          dispatch(setUserState({ exists: true, email: userExists.email }));
           console.log("User Valid");
         } else {
-          dispatch(setUserState({ exists: false }));
+          dispatch(setUserState({ exists: false, email: userExists.email }));
           console.log("user Invalid");
         }
       } catch (error) {

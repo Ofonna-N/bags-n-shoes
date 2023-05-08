@@ -70,8 +70,8 @@ const FilterSortingSideMenu: React.FC<Props> = ({
   };
 
   return (
-    <div>
-      <div className="relative bg-slate-600 flex flex-col items-center gap-2 text-[1.4rem] py-3">
+    <div className="">
+      <div className=" relative border-b border-b-slate-400 flex flex-col items-center gap-2 text-[1.4rem] py-3">
         <span>Filter & Sort</span>
         <span>
           {availabilityFilter[0].count + availabilityFilter[1].count} producs
@@ -81,10 +81,10 @@ const FilterSortingSideMenu: React.FC<Props> = ({
             onCloseOverlay();
           }}
         >
-          <GrClose className="absolute right-4 top-[50%] translate-y-[-50%] text-[2rem]" />
+          <GrClose className="text-[#121212] absolute right-4 top-[50%] translate-y-[-50%] text-[2rem]" />
         </button>
       </div>
-      <ul className="mt-16">
+      <ul className="mt-16 b text-base2">
         {submenus.map((subMenu) => (
           <li key={subMenu}>
             <SideMenuBtn

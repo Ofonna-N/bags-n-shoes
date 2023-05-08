@@ -15,7 +15,7 @@ const QuantityCounter: React.FC<Props> = ({
   updateQuantity,
 }) => {
   return (
-    <div className="w-max flex items-center gap-[1rem] border text-[1.8rem]">
+    <div className="w-max flex items-center gap-[1rem] border border-base text-[1.8rem]">
       <button
         className="py-[1rem] px-[1rem]"
         onClick={() => {

@@ -27,6 +27,9 @@ export { apiURLColors };
 const apiURLProductType = "http://localhost:3000/api/filters/producttype";
 export { apiURLProductType };
 
+const apiUrlUser = "http://localhost:3000/api/auth/user";
+export { apiUrlUser };
+
 const sortingDropDownValues = {
   name_asc: "a-z",
   name_des: "z-a",

@@ -8,13 +8,12 @@ const Navbar = () => {
   return (
     <div className="relative py-12 shadow-sm flex items-center justify-between gap-8">
       <MenuToggler />
-      <div>
-        <img
-          src="images/logo.svg"
-          alt="logo"
-          className="w-[70px] md:w-[80px] lg:w-[90px]"
-        />
-      </div>
+      <img
+        src="images/logo.svg"
+        alt="logo"
+        className="w-[70px] md:w-[80px] lg:w-[90px]"
+      />
+
       {/**@ts-expect-error Async Server Component*/}
       <CategoryBtnsContainer />
       <div className="flex justify-end lg:grow ">

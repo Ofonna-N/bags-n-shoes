@@ -10,6 +10,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import FormSucessModal from "../../components/FormSucessModal";
 import { SignInWithEmailAndPassword } from "@/firebase/appAuth";
 import useValidAccount from "@/customHooks/useValidAccount";
+import LoadingText from "@/app/components/extras/LoadingText";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -17,12 +18,14 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const validAccount = useValidAccount();
-
+  const [isLoading, setisLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   const onSubmitForm = async () => {
     // console.log("Login details", email, password);
+    setisLoading(true);
     const loginStatus = await SignInWithEmailAndPassword(email, password);
+    setisLoading(false);
 
     if (loginStatus.ok) {
       // console.log("has user: ");
@@ -63,6 +66,11 @@ const LoginForm = () => {
   }, [validAccount]);
   return (
     <>
+      {isLoading && (
+        <span className="block w-max mx-auto mb-7">
+          <LoadingText label="Logging you in..." />
+        </span>
+      )}
       <FormErrorModal errorMsg={errorMsg} />
       <AccountForm submitFormHandler={onSubmitForm}>
         <FormSucessModal successMsg={params.get("msg")} />
@@ -87,7 +95,8 @@ const LoginForm = () => {
         <span className="block sm:w-[15rem] mx-auto">
           <EmptyBtn
             label="Sign in"
-            className="bg-black text-white"
+            className="bg-base text-white"
+            disabled={isLoading}
             // clickHandler={onSubmitForm}
           />
           <Link

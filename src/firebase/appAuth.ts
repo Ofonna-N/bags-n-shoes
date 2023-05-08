@@ -28,7 +28,7 @@ export async function getUserExists(): Promise<UserValidationPromise> {
   return new Promise((resolve, reject) => {
     const unsubscribe = appAuth.onAuthStateChanged((user) => {
       if (user) {
-        resolve({ ok: true, unsubscribe });
+        resolve({ ok: true, unsubscribe, email: user.email });
       } else {
         reject({ ok: false, unsubscribe });
       }

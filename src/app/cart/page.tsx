@@ -28,7 +28,7 @@ const CartPage = async () => {
         <span className="block translate-y-[-7rem]">
           <Link
             href={"/productslisting"}
-            className="bg-black  text-white block text-center py-[1.5rem] w-[30rem] mx-auto"
+            className="bg-base text-white block text-center py-[1.5rem] w-[30rem] mx-auto"
           >
             View all
           </Link>

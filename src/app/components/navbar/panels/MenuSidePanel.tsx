@@ -9,6 +9,7 @@ import MenuSelectBtn from "../MenuSelectBtn";
 import { useAppDispatch } from "@/customHooks/storeHooks";
 import { updateCateryFilter } from "@/appstore/slices/CategoryFilterSlice";
 import { toggleSideMenu } from "@/appstore/slices/SideMenuToggleSlice";
+import { useRouter } from "next/navigation";
 
 interface Props {
   categoriesResponse: Promise<Category[]>;
@@ -24,10 +25,11 @@ const MenuSidePanel: React.FC<Props> = ({ categoriesResponse }) => {
   });
 
   const dispach = useAppDispatch();
+  const router = useRouter();
 
   const onSideMenuBtnClicked = (title: string, index: number) => {
     setSubMenuToggled({ title, index, toggled: true });
-    console.log({ title, index }, "menu cat");
+    // console.log({ title, index }, "menu cat");
   };
   const onSubMenuBtnClicked = () => {
     setSubMenuToggled({ title: "", index: -1, toggled: false });
@@ -36,6 +38,7 @@ const MenuSidePanel: React.FC<Props> = ({ categoriesResponse }) => {
   const onSelectMenuBtnClicked = (select: string) => {
     dispach(updateCateryFilter({ category: select }));
     // onSubMenuBtnClicked();
+    router.push("/productslisting");
     dispach(toggleSideMenu());
   };
 
@@ -71,7 +74,7 @@ const MenuSidePanel: React.FC<Props> = ({ categoriesResponse }) => {
             {subMenuToggled.index > -1 && (
               <MenuSelectBtn
                 label="Shop all"
-                className="bg-slate-700 pl-[2rem] py-[1rem]"
+                className="bg-white hover:bg-slate-300 pl-[2rem] py-[1rem]"
                 clickHandler={() =>
                   onSelectMenuBtnClicked(
                     categories[subMenuToggled.index].attributes.name
@@ -86,7 +89,7 @@ const MenuSidePanel: React.FC<Props> = ({ categoriesResponse }) => {
                 <li key={submenuCat.id} className="text-[1.4rem]">
                   <MenuSelectBtn
                     label={submenuCat.attributes.name}
-                    className="bg-slate-700 pl-[2rem] py-[1rem]"
+                    className="bg-white pl-[2rem] py-[1rem] hover:bg-slate-300"
                     clickHandler={() =>
                       onSelectMenuBtnClicked(submenuCat.attributes.name)
                     }

@@ -15,7 +15,7 @@ const EmptyBtn: React.FC<Props> = ({
 }) => {
   return (
     <button
-      className={`py-[1rem] w-full ${className}`}
+      className={`py-[1rem] w-full ${className} disabled:bg-slate-500`}
       disabled={disabled}
       onClick={clickHandler}
     >

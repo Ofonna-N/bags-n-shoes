@@ -17,8 +17,8 @@ const ClickableBadge: React.FC<Props> = ({
   // console.log(selected);
   return (
     <button
-      className={`text-white px-[15px] py-[5px] rounded-[25px] border border-black
-      ${selected ? `bg-black` : ""}`}
+      className={`px-[15px] py-[5px] rounded-[25px] border-base border-[1px]
+      ${selected ? `bg-base text-white ` : ""}`}
       onClick={() => clickHanlder(label)}
     >
       {label}

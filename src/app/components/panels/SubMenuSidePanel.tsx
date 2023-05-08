@@ -15,15 +15,13 @@ const SubMenuSidePanel: React.FC<Props> = ({
   // console.log(data, "checking");
   return (
     <div
-      className={`bg-orange-900 absolute top-0 right-0 h-full transition-all ${
+      className={`bg-white absolute top-0 right-0 h-full transition-all ${
         data.toggled ? "w-full" : "w-0"
       } `}
     >
       <SideMenuBtn label={data.title} back onClicked={onBackbtnClicked} />
 
-      <div className="bg-red-600 overflow-y-scroll h-full pb-12">
-        {children}
-      </div>
+      <div className="overflow-y-auto h-full pb-12">{children}</div>
     </div>
   );
 };

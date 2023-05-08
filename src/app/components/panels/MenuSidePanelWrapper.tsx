@@ -22,8 +22,8 @@ const MenuSidePanelWrapper: FC<Props> = ({
 
   return (
     <div
-      className={`bg-red-500 absolute overflow-hidden top-0 lg:hidden ${
-        isLeft ? "left-0" : "right-0"
+      className={`bg-white border-slate-300 border-r absolute overflow-hidden top-0 lg:hidden ${
+        isLeft ? "left-0" : "right-0 border-l"
       } h-[100vh] transition-all ${
         menuState.toggled ? "w-[80%] md:w-1/2" : "w-0"
       }`}

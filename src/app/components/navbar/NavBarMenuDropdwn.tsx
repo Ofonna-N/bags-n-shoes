@@ -58,7 +58,7 @@ const NavBarMenuDropdwn: React.FC<Props> = ({ label, subCategory }) => {
       />
       <ul
         tabIndex={0}
-        className={`absolute top-[150%] min-w-[20rem] flex flex-col gap-8 ${
+        className={`absolute  top-[150%] min-w-[20rem] flex flex-col gap-8 ${
           toggleDropdwn ? "block" : "hidden"
         } bg-white border px-[3rem] py-[2.5rem]`}
       >
@@ -66,6 +66,7 @@ const NavBarMenuDropdwn: React.FC<Props> = ({ label, subCategory }) => {
           <MenuSelectBtn
             label={"Shop All"}
             clickHandler={() => menuSelectBtnClicked(label)}
+            className="text-base2 hover:text-gray-900 hover:font-semibold"
           />
         </li>
         {subCategory.map((sub) => (
@@ -73,6 +74,7 @@ const NavBarMenuDropdwn: React.FC<Props> = ({ label, subCategory }) => {
             <MenuSelectBtn
               label={sub.attributes.name}
               clickHandler={() => menuSelectBtnClicked(sub.attributes.name)}
+              className="text-base2 hover:text-gray-900 hover:font-semibold"
             />
           </li>
         ))}

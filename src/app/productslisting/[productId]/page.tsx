@@ -28,15 +28,15 @@ const ProductPage = async ({ params }: DynamicRouteProp) => {
     <Container>
       <div className="">
         <ProductDetails product={product} />
-        <div className="flex flex-col md:flex-row  w-full ">
-          <div className="bg-lime-700 w-full p-[7rem]">
+        <div className="flex flex-col md:flex-row  w-full bg-slate-200">
+          <div className="w-full p-[7rem]">
             <h3 className="text-[4rem]">A new kind of bag</h3>
-            <p className="text-[1.8rem]">
+            <p className="text-[1.8rem] text-base2">
               Unexpected shapes with smart details, functionality, a new luxury
               feel with a contemporary price point.
             </p>
           </div>
-          <div className="bg-lime-300 min-h-[31.2rem] relative w-full overflow-hidden">
+          <div className="min-h-[31.2rem] relative w-full overflow-hidden">
             <Image
               src={pdExtraImg}
               width={548}
@@ -47,16 +47,16 @@ const ProductPage = async ({ params }: DynamicRouteProp) => {
           </div>
         </div>
         <div className="flex flex-col md:flex-row w-full mb-[2rem]">
-          <div className="bg-lime-800 w-full p-[4rem]">
+          <div className=" w-full p-[4rem]">
             <h3 className="text-[2.5rem]"> Free Shipping</h3>
-            <p className="text-[1.6rem]">
+            <p className="text-[1.6rem] text-base2">
               We offer free worldwide express shipping on all orders. You'll
               receive your order an estimated 1–4 days after shipment.
             </p>
           </div>
-          <div className="bg-lime-800 w-full p-[4rem]">
+          <div className=" w-full p-[4rem]">
             <h3 className="text-[2.5rem]">Hassle-Free Exchanges</h3>
-            <p className="text-[1.6rem]">
+            <p className="text-[1.6rem] text-base2">
               Exchanges are free. Try from the comfort of your home. We will
               collect from your home, work or an alternative address.
             </p>

@@ -11,6 +11,7 @@ import {
   apiURLColors,
   apiURLProductType,
   apiURLAvailablity,
+  apiUrlUser,
 } from "./baseExports";
 
 export async function GetProductsWithMenta(): Promise<ProductsWithMeta> {
@@ -75,4 +76,18 @@ export async function GetProductsAvailability(): Promise<ProductsFilter[]> {
   const availabilityFilter: ProductsFilter[] = await response.json();
 
   return availabilityFilter;
+}
+
+export async function GetUser(email: string) {
+  const response = await fetch(apiUrlUser, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  });
+
+  const user = await response.json();
+
+  return user;
 }

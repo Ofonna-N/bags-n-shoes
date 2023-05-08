@@ -23,7 +23,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <button
-      className="max-w-[600px] justify-self-center cursor-pointer text-left"
+      className="group max-w-[600px] justify-self-center cursor-pointer text-left"
       onClick={() => router.push(`/productslisting/${product.id}`)}
     >
       <div className="relative overflow-hidden">
@@ -55,7 +55,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         )}
       </div>
       <div>
-        <h3 className="text-[1.3rem] mb-2">
+        <h3 className="text-[1.5rem] mb-2 group-hover:underline">
           {" "}
           {product.attributes.name || "Art Deco"}
         </h3>
