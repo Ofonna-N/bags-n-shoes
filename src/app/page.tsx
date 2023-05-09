@@ -13,7 +13,7 @@ export default function Home() {
       <HeroSection />
       {/* @ts-ignore-error Server Component*/}
       <FeaturedSection />
-      <BackInStockSection />
+      {/* <BackInStockSection /> */}
       <VideoSection />
       <TextPromoSection />
     </main>

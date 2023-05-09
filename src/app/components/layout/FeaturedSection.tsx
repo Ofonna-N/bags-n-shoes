@@ -8,7 +8,7 @@ const FeaturedSection = async () => {
 
   return (
     <Container>
-      <div className="p-[2rem]">
+      <div className="p-[2rem] mb-[4rem]">
         <div className="text-center mb-12">
           <h2 className="text-[3rem] md:text-[4rem] mb-7">
             Obsessive Attention. Intelligent Effort.
@@ -21,11 +21,6 @@ const FeaturedSection = async () => {
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
           {products.map((product, i) => (
             <li>
-              {/* <div className="max-w-[40rem] bg-red-600 justify-self-center">
-                <div className="aspect-square w-20rem">img</div>
-                <p>Name</p>
-                <p>Price</p>
-              </div> */}
               <ProductCard product={product} />
             </li>
           ))}
