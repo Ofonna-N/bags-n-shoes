@@ -7,28 +7,28 @@ export { baseImageUrl };
 const siteUrl = "https://strapi-xpu6.onrender.com";
 export { siteUrl };
 
-const siteUrlText = "http://localhost:3000";
+const siteUrlText = "http://127.0.0.1:3000";
 export { siteUrlText };
 
-const apiURLProducts = "http://localhost:3000/api/products";
+const apiURLProducts = "http://127.0.0.1:3000/api/products";
 export { apiURLProducts };
 
-const apiURLCategories = "http://localhost:3000/api/categories";
+const apiURLCategories = "http://127.0.0.1:3000/api/categories";
 export { apiURLCategories };
 
-const apiURLFilteredProducts = "http://localhost:3000/api/filters/products";
+const apiURLFilteredProducts = "http://127.0.0.1:3000/api/filters/products";
 export { apiURLFilteredProducts };
 
-const apiURLAvailablity = "http://localhost:3000/api/filters/availability";
+const apiURLAvailablity = "http://127.0.0.1:3000/api/filters/availability";
 export { apiURLAvailablity };
 
-const apiURLColors = "http://localhost:3000/api/filters/colors";
+const apiURLColors = "http://127.0.0.1:3000/api/filters/colors";
 export { apiURLColors };
 
-const apiURLProductType = "http://localhost:3000/api/filters/producttype";
+const apiURLProductType = "http://127.0.0.1:3000/api/filters/producttype";
 export { apiURLProductType };
 
-const apiUrlUser = "http://localhost:3000/api/auth/user";
+const apiUrlUser = "http://127.0.0.1:3000/api/auth/user";
 export { apiUrlUser };
 
 const sortingDropDownValues = {
