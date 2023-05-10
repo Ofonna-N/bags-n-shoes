@@ -20,6 +20,12 @@ import ClientSideInitializers from "@/components/initializers/ClientSideInitiali
 export const metadata = {
   title: 'Bags "n" Shoes',
   description: "welcome to our demo store for selling bags and shoes",
+  icons: {
+    icon: {
+      url: "/images/icon.png",
+      type: "image/png",
+    },
+  },
 };
 
 export default function RootLayout({

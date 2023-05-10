@@ -1,5 +1,5 @@
 import Container from "@/app/components/containers/Container";
-import { GetFilteredProducts, GetProduct } from "@/utility/AsyncFetchFunctions";
+// import { GetFilteredProducts, GetProduct } from "@/utility/AsyncFetchFunctions";
 import {
   getRandomSort,
   siteUrl,
@@ -12,78 +12,82 @@ import ProductDetails from "../components/product/ProductDetails";
 import ProductCard from "../components/product/ProductCard";
 import FeaturedProductsWrappper from "../components/product/FeaturedProductsWrappper";
 import { Product } from "@/utility/CustomTypes";
+import {
+  GetFilteredProducts,
+  GetProduct,
+} from "@/app/functions/RouteAlternative";
 
 type DynamicRouteProp = {
   params: { productId: string };
 };
 
-async function GetRawProduct(id: string) {
-  const pResponse = await fetch(
-    `${siteUrl}/api/products?populate=*&filters[id][$eq]=${id}`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
-      },
-    }
-  );
-  const productData = await pResponse.json();
-  const product = productData.data[0];
-  return product;
-}
+// async function GetRawProduct(id: string) {
+//   const pResponse = await fetch(
+//     `${siteUrl}/api/products?populate=*&filters[id][$eq]=${id}`,
+//     {
+//       headers: {
+//         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+//       },
+//     }
+//   );
+//   const productData = await pResponse.json();
+//   const product = productData.data[0];
+//   return product;
+// }
 
-async function GetFeaturedProductsRaw(
-  productName: string,
-  categoryName: string,
-  sort: string
-) {
-  let sortValue = "sort[0]=name:asc";
-  switch (sort) {
-    case sortingDropDownValues.name_asc:
-      sortValue = "sort[0]=name:asc";
-      break;
-    case sortingDropDownValues.name_des:
-      sortValue = "sort[0]=name:desc";
-      break;
-    case sortingDropDownValues.price_asc:
-      sortValue = "sort[0]=price:asc";
-      break;
-    case sortingDropDownValues.price_desc:
-      sortValue = "sort[0]=price:desc";
-      break;
+// async function GetFeaturedProductsRaw(
+//   productName: string,
+//   categoryName: string,
+//   sort: string
+// ) {
+//   let sortValue = "sort[0]=name:asc";
+//   switch (sort) {
+//     case sortingDropDownValues.name_asc:
+//       sortValue = "sort[0]=name:asc";
+//       break;
+//     case sortingDropDownValues.name_des:
+//       sortValue = "sort[0]=name:desc";
+//       break;
+//     case sortingDropDownValues.price_asc:
+//       sortValue = "sort[0]=price:asc";
+//       break;
+//     case sortingDropDownValues.price_desc:
+//       sortValue = "sort[0]=price:desc";
+//       break;
 
-    default:
-      break;
-  }
-  const pResponse = await fetch(
-    `${siteUrl}/api/products?populate=*&pagination[pageSize]=4&filters[name][$ne]=${productName}&${sortValue}&filters[category][name][$eq]=${categoryName}`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
-      },
-    }
-  );
+//     default:
+//       break;
+//   }
+//   const pResponse = await fetch(
+//     `${siteUrl}/api/products?populate=*&pagination[pageSize]=4&filters[name][$ne]=${productName}&${sortValue}&filters[category][name][$eq]=${categoryName}`,
+//     {
+//       headers: {
+//         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+//       },
+//     }
+//   );
 
-  const productsJson = await pResponse.json();
-  const products = productsJson.data;
-  // console.log(products, "YEEER");
-  return products;
-}
+//   const productsJson = await pResponse.json();
+//   const products = productsJson.data;
+//   // console.log(products, "YEEER");
+//   return products;
+// }
 
 const ProductPage = async ({ params }: DynamicRouteProp) => {
-  const product: Product = await GetRawProduct(params.productId);
-  const featuredProducts: Product[] = await GetFeaturedProductsRaw(
-    product.attributes.name,
-    product.attributes.category.data.attributes.name,
-    getRandomSort()
-  );
+  // const product: Product = await GetRawProduct(params.productId);
+  // const featuredProducts: Product[] = await GetFeaturedProductsRaw(
+  //   product.attributes.name,
+  //   product.attributes.category.data.attributes.name,
+  //   getRandomSort()
+  // );
   // console.log(featuredProducts.length, "Yessirsky");
   // console.log(product.attributes.name, "Yessirsky");
-  // const product = await GetProduct(params.productId);
-  // const featuredProducts = await GetFilteredProducts(
-  //   `maxCount=4&exclude=${product.attributes.name}&producttype=${
-  //     product.attributes.category.data.attributes.name
-  //   }&sort=${getRandomSort()}`
-  // );
+  const product = await GetProduct(params.productId);
+  const featuredProducts = await GetFilteredProducts(
+    `maxCount=4&exclude=${product.attributes.name}&producttype=${
+      product.attributes.category.data.attributes.name
+    }&sort=${getRandomSort()}`
+  );
   // return null;
   return (
     <Container>

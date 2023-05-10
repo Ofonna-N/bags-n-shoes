@@ -5,9 +5,10 @@ import CartItem from "./components/CartItem";
 import EmptyBtn from "../productslisting/components/product/EmptyBtn";
 import CartDisplay from "./components/CartDisplay";
 import { getRandomSort } from "@/utility/baseExports";
-import { GetFilteredProducts } from "@/utility/AsyncFetchFunctions";
+// import { GetFilteredProducts } from "@/utility/AsyncFetchFunctions";
 import FeaturedProductsWrappper from "../productslisting/components/product/FeaturedProductsWrappper";
 import ProductCard from "../productslisting/components/product/ProductCard";
+import { GetFilteredProducts } from "../functions/RouteAlternative";
 
 const CartPage = async () => {
   const featuredProducts = await GetFilteredProducts(

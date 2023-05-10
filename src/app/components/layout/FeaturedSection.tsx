@@ -1,7 +1,8 @@
 import React from "react";
 import Container from "../containers/Container";
-import { GetFilteredProducts } from "@/utility/AsyncFetchFunctions";
+// import { GetFilteredProducts } from "@/utility/AsyncFetchFunctions";
 import ProductCard from "@/app/productslisting/components/product/ProductCard";
+import { GetFilteredProducts } from "@/app/functions/RouteAlternative";
 
 const FeaturedSection = async () => {
   const products = await GetFilteredProducts("maxCount=8");

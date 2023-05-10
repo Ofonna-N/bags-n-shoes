@@ -1,4 +1,4 @@
-"use clien";
+"use client";
 
 import { Product } from "@/utility/CustomTypes";
 import { useEffect, useRef, useState } from "react";
