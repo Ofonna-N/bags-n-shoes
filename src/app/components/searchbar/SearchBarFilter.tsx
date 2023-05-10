@@ -123,7 +123,7 @@ const SearchBarFilter: React.FC<Props> = ({ closeHandler, isMenu }) => {
           className="absolute left-[102%] top-[50%] translate-y-[-50%] "
           onClick={closeHandler}
         >
-          <MdOutlineClose className="text-[2rem] text-slate-800" />
+          <MdOutlineClose className="text-[2rem] text-slate-800 scale-110 duration-75 transition-all" />
         </button>
       )}
     </div>

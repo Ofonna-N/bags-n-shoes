@@ -48,20 +48,20 @@ const NavBarRightSideWrapper = () => {
     <div className="flex text-[2rem] gap-6">
       <IconBtn
         icon={<BsSearch />}
-        className=""
+        className="hover:scale-110 duration-75"
         clickHandler={() => {
           dispach(toggleSearchBarMenuOverlay({ toggle: true }));
         }}
       />
       <IconBtn
         icon={<RxAvatar />}
-        className="hidden md:block"
+        className="hidden md:block hover:scale-110 duration-75"
         clickHandler={accountClickHandler}
       />
       <span className="relative">
         <IconBtn
           icon={<BsBag />}
-          className=""
+          className="hover:scale-110 duration-75"
           clickHandler={cartBtnClickHandler}
         />
         <span className="pointer-events-none select-none absolute bottom-[-1px] left-[10px] bg-black  px-[5px] text-white text-[1.3rem] rounded-[50%] flex items-center justify-center">

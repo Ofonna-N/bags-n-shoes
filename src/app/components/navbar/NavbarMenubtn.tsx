@@ -37,7 +37,14 @@ const NavbarMenubtn: React.FC<Props> = ({
 
   return (
     <button className="flex items-center gap-1" onClick={clickHandler}>
-      <span className="capitalize">{btnLabel}</span> {getBtn()}
+      <span
+        className={`capitalize border-b-base ${
+          isClicked ? "border-b" : ""
+        } hover:border-b`}
+      >
+        {btnLabel}
+      </span>
+      {getBtn()}
     </button>
   );
 };
