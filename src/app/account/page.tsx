@@ -14,7 +14,7 @@ const AccountPage = () => {
       <UserAuthenticator>
         <h2 className="text-[4rem] mt-[3rem]">Account</h2>
         <LogoutForm />
-        <div className="flex flex-wrap gap-y-9  mt-[3rem] mb-[12rem] text-[1.6rem]">
+        <div className="flex flex-col sm:flex-row gap-y-9  mt-[3rem] mb-[12rem] text-[1.6rem]">
           <div className="grow-[1]">
             <h3 className="text-[4rem]">Order history</h3>
             <p>You haven't placed any orders yet.</p>

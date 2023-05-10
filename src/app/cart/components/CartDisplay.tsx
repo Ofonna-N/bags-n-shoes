@@ -12,7 +12,7 @@ const CartDisplay = () => {
   const hasUser = useAppSelector((state) => state.UserSlice.userExist);
   return cart.cartItems.length > 0 ? (
     <>
-      <div className="py-[4rem] flex flex-wrap justify-between items-center">
+      <div className="py-[4rem] flex flex-col sm:flex-row justify-between items-center">
         <h2 className="text-[5rem]">Your cart</h2>
         <Link
           href={"/productslisting"}
