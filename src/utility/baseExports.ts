@@ -3,7 +3,8 @@ const baseImageUrl =
 
 export { baseImageUrl };
 
-const siteUrl = "http://127.0.0.1:1337";
+// const siteUrl = "http://127.0.0.1:1337";
+const siteUrl = "https://strapi-xpu6.onrender.com";
 export { siteUrl };
 
 const siteUrlText = "http://localhost:3000";

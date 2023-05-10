@@ -79,15 +79,14 @@ export async function GetProductsAvailability(): Promise<ProductsFilter[]> {
 }
 
 export async function GetUser(email: string) {
+  // console.log("sending: ", email);
   const response = await fetch(apiUrlUser, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email }),
   });
-
   const user = await response.json();
+  // console.log("GOT USER: ", user);
 
   return user;
 }

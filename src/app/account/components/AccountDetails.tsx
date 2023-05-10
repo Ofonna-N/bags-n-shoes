@@ -17,15 +17,17 @@ const AccountDetails = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
+        // console.log("fething email: ", email);
         const userResponse = await GetUser(email || "");
+        // console.log(userResponse, "email fetched");
         setUser(userResponse);
       } catch (error) {
-        console.log((error as Error).message);
+        console.log((error as Error).message, "Problem!");
       }
     };
 
     getUser();
-  }, []);
+  }, [email]);
 
   return (
     <>

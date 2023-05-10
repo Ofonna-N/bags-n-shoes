@@ -90,10 +90,13 @@ const AddedToCartPopUp: React.FC<Props> = ({ name, color, size, imgSrc }) => {
       <div className="flex flex-col gap-[1rem] ">
         <EmptyBtn
           label={`View my cart (${cartQuantity})`}
-          className="border-base border"
+          className="border-base border hover:outline-[2px] hover:outline outline-base transition-all duration-75"
           clickHandler={() => router.push("/cart")}
         />
-        <EmptyBtn label="Check out" className="bg-base text-white" />
+        <EmptyBtn
+          label="Check out"
+          className="bg-base text-white hover:outline-[2px] hover:outline outline-base transition-all duration-75"
+        />
         <Link
           href={"/productslisting"}
           className="border-b border-base w-max mx-auto text-[1.6rem]"

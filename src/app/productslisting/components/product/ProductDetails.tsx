@@ -166,7 +166,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
           <div className="flex flex-col gap-6 text-[1.6rem]">
             <EmptyBtn
               label="Add to cart"
-              className="border-base border"
+              className="border-base border hover:outline-[2px] hover:outline outline-base transition-all duration-75"
               disabled={product.attributes.quantity <= 0}
               clickHandler={() => {
                 dispach(
@@ -190,7 +190,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
             />
             <EmptyBtn
               label="Buy it now"
-              className="text-white bg-base"
+              className="text-white bg-base hover:outline-[2px] hover:outline outline-base transition-all duration-75"
               disabled={product.attributes.quantity <= 0}
             />
           </div>

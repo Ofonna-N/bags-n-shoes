@@ -28,7 +28,7 @@ const RecoverForm = () => {
         <span className="block sm:w-[15rem] mx-auto mt-[3rem]">
           <EmptyBtn
             label="Submit"
-            className="bg-base text-white text-[1.6rem]"
+            className="bg-base text-white text-[1.6rem] hover:outline-[2px] hover:outline outline-base transition-all duration-75"
           />
         </span>
       </AccountForm>

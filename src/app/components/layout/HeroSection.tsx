@@ -31,7 +31,7 @@ const HeroSection = () => {
           <h3 className="text-[1.5rem]">Atypical leather goods</h3>
           <Link
             href={"/productslisting"}
-            className="text-white text-[1.8rem] border border-white px-[3rem] py-[1rem]  hover:outline"
+            className="text-white text-[1.8rem] border border-white px-[3rem] py-[1rem] hover:outline hover:outline-[2px] transition-all duration-75"
           >
             Shop now
           </Link>

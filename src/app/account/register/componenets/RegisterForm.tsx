@@ -118,7 +118,7 @@ const RegisterForm = () => {
         <span className="block sm:w-[15rem] mx-auto">
           <EmptyBtn
             label="Create"
-            className="bg-base text-white"
+            className="bg-base text-white hover:outline-[2px] hover:outline outline-base transition-all duration-75"
             disabled={isLoading}
             // clickHandler={onSubmitForm}
           />

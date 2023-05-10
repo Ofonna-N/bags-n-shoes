@@ -49,7 +49,10 @@ const CartDisplay = () => {
         </p>
 
         <div className="md:w-[40%] md:float-right">
-          <EmptyBtn label="Check Out" className="bg-base text-white" />
+          <EmptyBtn
+            label="Check Out"
+            className="bg-base text-white hover:outline-[2px] hover:outline outline-base transition-all duration-75"
+          />
         </div>
       </div>
     </>
@@ -59,7 +62,7 @@ const CartDisplay = () => {
       <div className="w-[20rem] mx-auto mb-[3rem]">
         <EmptyBtn
           label="Continue shopping"
-          className="bg-base text-white"
+          className="bg-base text-white hover:outline-[2px] hover:outline outline-base transition-all duration-75"
           clickHandler={() => {
             router.push("/productslisting");
             // console.log("yerr");
