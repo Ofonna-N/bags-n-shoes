@@ -9,6 +9,7 @@ export async function GET() {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
     },
+    cache: "no-store",
   });
   const responseJson = await productsResponse.json();
   // const products = responseJson.data;

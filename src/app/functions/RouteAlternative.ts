@@ -22,6 +22,7 @@ export async function GetProductsWithMenta(): Promise<ProductsWithMeta> {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
     },
+    cache: "no-store",
   });
   const responseJson = await productsResponse.json();
   // const products = responseJson.data;
@@ -54,6 +55,7 @@ export async function GetCategories(): Promise<Category[]> {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
       },
+      cache: "no-store",
     }
   );
 
@@ -164,6 +166,7 @@ export async function GetFilteredProducts(
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
       },
+      cache: "no-store",
     }
   );
   const responseJson = await productsResponse.json();

@@ -8,6 +8,7 @@ export async function GET() {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
       },
+      cache: "no-store",
     }
   );
 
