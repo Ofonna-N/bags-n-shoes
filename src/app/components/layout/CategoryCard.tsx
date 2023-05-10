@@ -31,9 +31,9 @@ const CategoryCard = ({ img, label }: { img: string; label: string }) => {
           className="w-full h-full object-cover group-hover:scale-105 transition-all"
         />
       </div>
-      <p className="bg-white flex justify-between w-full items-center text-[1.8rem] z-30">
+      <p className="bg-white flex gap-2 w-full items-center text-[1.8rem] z-30">
         {label}
-        <BsArrowRight className="text-[2.5rem] mr-[1rem] transition-all group-hover:mr-0" />
+        <BsArrowRight className="text-[2.5rem] mt-1 ml-0 transition-all group-hover:ml-[1rem]" />
       </p>
     </button>
   );

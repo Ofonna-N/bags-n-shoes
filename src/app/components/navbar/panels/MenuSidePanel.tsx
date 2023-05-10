@@ -46,7 +46,7 @@ const MenuSidePanel: React.FC<Props> = ({ categoriesResponse }) => {
 
   useEffect(() => {
     categoriesResponse.then((response) => {
-      console.log(response, "Side menu categories");
+      // console.log(response, "Side menu categories");
       setCategories(response);
       // return response;
     });

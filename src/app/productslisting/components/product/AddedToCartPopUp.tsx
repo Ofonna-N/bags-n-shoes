@@ -32,7 +32,7 @@ const AddedToCartPopUp: React.FC<Props> = ({ name, color, size, imgSrc }) => {
   };
 
   useEffect(() => {
-    console.log(cartQuantity, "quantity");
+    // console.log(cartQuantity, "quantity");
     if (!mountRef.current) {
       mountRef.current = true;
       return;
@@ -45,7 +45,7 @@ const AddedToCartPopUp: React.FC<Props> = ({ name, color, size, imgSrc }) => {
     return () => {
       clearTimeout(timeout);
       setDisplay("hidden");
-      console.log("use effect cleanup");
+      // console.log("use effect cleanup");
     };
   }, [cartQuantity]);
 

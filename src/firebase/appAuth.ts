@@ -9,7 +9,7 @@ import {
 import myApp from "./firebaseApp";
 import { UserValidationPromise } from "@/utility/CustomTypes";
 
-console.log("Running Firebase auth");
+// console.log("Running Firebase auth");
 const appAuth = getAuth(myApp);
 // let UserEmail: string | null = "";
 

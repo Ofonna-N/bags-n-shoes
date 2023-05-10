@@ -7,7 +7,7 @@ const firebaseConfig = {
   projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
   appId: process.env.NEXT_PUBLIC_PROJECT_ID,
 };
-console.log("initialized Firebase App");
+// console.log("initialized Firebase App");
 const myApp = initializeApp(firebaseConfig);
 
 export default myApp;
