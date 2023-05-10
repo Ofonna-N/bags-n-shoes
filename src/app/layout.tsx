@@ -1,4 +1,3 @@
-"use-server";
 import Navbar from "./components/navbar/Navbar";
 import { assistant } from "./components/Fonts";
 import "./globals.css";

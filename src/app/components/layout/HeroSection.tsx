@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Container from "../containers/Container";
+import Image from "next/image";
 
 const HeroSection = () => {
   return (
@@ -8,16 +9,20 @@ const HeroSection = () => {
       {/* Hero Images */}
       <div className="absolute top-0 right-0 bg-slate-500 flex  w-full h-full overflow-hidden">
         <div className="bg-slate-700 relative w-full after:content-[''] after:w-full after:h-full after:bg-black after:absolute after:top-0 after:left-0 after:opacity-[0.35]">
-          <img
+          <Image
             src="https://cdn.shopify.com/s/files/1/0551/9242/0441/files/141569803_417219312901458_4638470652865432174_n.jpg?v=1637107084"
             alt=""
             className="absolute w-full h-full object-cover"
+            width={1024}
+            height={1024}
           />
         </div>
         <div className="bg-slate-800 relative w-full after:content-[''] after:w-full after:h-full after:bg-black after:absolute after:top-0 after:left-0 after:opacity-[0.35]">
-          <img
+          <Image
             src="https://cdn.shopify.com/s/files/1/0551/9242/0441/files/Mlouye_1100x.jpg?v=1637107315"
             className="absolute w-full h-full object-cover"
+            width={1024}
+            height={1024}
             alt=""
           />
         </div>

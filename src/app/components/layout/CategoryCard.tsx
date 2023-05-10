@@ -1,6 +1,7 @@
 "use client";
 import { updateCateryFilter } from "@/appstore/slices/CategoryFilterSlice";
 import { useAppDispatch } from "@/customHooks/storeHooks";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
@@ -22,7 +23,9 @@ const CategoryCard = ({ img, label }: { img: string; label: string }) => {
       onClick={() => menuSelectBtnClicked()}
     >
       <div className="h-full">
-        <img
+        <Image
+          width={1024}
+          height={1024}
           src={img}
           alt=""
           className="w-full h-full object-cover group-hover:scale-105 transition-all"

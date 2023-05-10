@@ -16,7 +16,7 @@ const LogoutForm = () => {
     e.preventDefault();
     setSignOutPending(true);
     const signOut = await SignOutUser();
-    dispach(setUserState({ exists: false }));
+    dispach(setUserState({ email: "", exists: false }));
     setSignOutPending(false);
     if (signOut.ok) {
       router.push("/account/login");

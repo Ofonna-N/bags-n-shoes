@@ -14,8 +14,8 @@ const FeaturedSection = async () => {
             Obsessive Attention. Intelligent Effort.
           </h2>
           <p className="text-[1.5rem] md:text-[1.6rem] text-base2">
-            Functional handbags made of luxurious materials to improve people's
-            lives in small but mighty ways.
+            Functional handbags made of luxurious materials to improve
+            people&apos;s lives in small but mighty ways.
           </p>
         </div>
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
