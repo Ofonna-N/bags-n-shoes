@@ -10,13 +10,13 @@ import TextPromoSection from "./components/layout/TextPromoSection";
 export default async function Home() {
   return (
     <main>
-      {/* <HeroSection /> */}
+      <HeroSection />
       {/* @ts-ignore-error Server Component*/}
-      {/* <FeaturedSection /> */}
+      <FeaturedSection />
       {/* @ts-ignore-error Server Component*/}
-      {/* <BackInStockSection /> */}
-      {/* <VideoSection /> */}
-      {/* <TextPromoSection /> */}
+      <BackInStockSection />
+      <VideoSection />
+      <TextPromoSection />
     </main>
   );
 }
