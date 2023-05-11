@@ -7,7 +7,7 @@ export { baseImageUrl };
 const backendUrl = "https://strapi-xpu6.onrender.com";
 export { backendUrl };
 
-const siteUrl = "https://bags-n-shoes-ecommerce-store.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export { siteUrl };
 
 const apiURLProducts = siteUrl + "/api/products";
