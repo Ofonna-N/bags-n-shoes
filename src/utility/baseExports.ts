@@ -10,25 +10,25 @@ export { backendUrl };
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export { siteUrl };
 
-const apiURLProducts = siteUrl + "/api/products";
+const apiURLProducts = "/api/products";
 export { apiURLProducts };
 
-const apiURLCategories = siteUrl + "/api/categories";
+const apiURLCategories = "/api/categories";
 export { apiURLCategories };
 
-const apiURLFilteredProducts = siteUrl + "/api/filters/products";
+const apiURLFilteredProducts = "/api/filters/products";
 export { apiURLFilteredProducts };
 
-const apiURLAvailablity = siteUrl + "/api/filters/availability";
+const apiURLAvailablity = "/api/filters/availability";
 export { apiURLAvailablity };
 
-const apiURLColors = siteUrl + "/api/filters/colors";
+const apiURLColors = "/api/filters/colors";
 export { apiURLColors };
 
-const apiURLProductType = siteUrl + "/api/filters/producttype";
+const apiURLProductType = "/api/filters/producttype";
 export { apiURLProductType };
 
-const apiUrlUser = siteUrl + "/api/auth/user";
+const apiUrlUser = "/api/auth/user";
 export { apiUrlUser };
 
 const sortingDropDownValues = {

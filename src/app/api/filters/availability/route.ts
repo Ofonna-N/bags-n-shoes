@@ -1,6 +1,6 @@
 import { GetProducts } from "@/utility/AsyncFetchFunctions";
 import { Product, ProductsFilter } from "@/utility/CustomTypes";
-import { apiURLProducts } from "@/utility/baseExports";
+import { apiURLProducts, siteUrl } from "@/utility/baseExports";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -8,7 +8,7 @@ export async function GET() {
   // return NextResponse.json(products);
   // const products = await productsResponse.json();
   // const products: DocumentData[] = await productsResponse.json();
-  const response = await fetch(apiURLProducts, {
+  const response = await fetch(siteUrl + apiURLProducts, {
     cache: "no-store",
   });
   const productsMeta = await response.json();

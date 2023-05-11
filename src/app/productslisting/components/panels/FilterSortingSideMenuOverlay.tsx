@@ -50,9 +50,9 @@ const FilterSortingSideMenuOverlay: React.FC = () => {
 
   useEffect(() => {
     const getFilters = async () => {
-      const fetchedColorFilters = GetColorFilters();
-      const fetchedAvailabilityFilters = GetProductsAvailability();
-      const fetchedProductTypesFilters = GetProductTypes();
+      const fetchedColorFilters = GetColorFilters(true);
+      const fetchedAvailabilityFilters = GetProductsAvailability(true);
+      const fetchedProductTypesFilters = GetProductTypes(true);
 
       const [colors, availability, productTypes] = await Promise.all([
         fetchedColorFilters,

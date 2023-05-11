@@ -12,10 +12,11 @@ import {
   apiURLProductType,
   apiURLAvailablity,
   apiUrlUser,
+  siteUrl,
 } from "./baseExports";
 
 export async function GetProductsWithMenta(): Promise<ProductsWithMeta> {
-  const response = await fetch(apiURLProducts);
+  const response = await fetch(siteUrl + apiURLProducts);
   const data = await response.json();
 
   return data;
@@ -38,7 +39,7 @@ export async function GetProduct(
 }
 
 export async function GetCategories(): Promise<Category[]> {
-  const categoriesResponse = await fetch(apiURLCategories);
+  const categoriesResponse = await fetch(siteUrl + apiURLCategories);
   const data = await categoriesResponse.json();
 
   return data;
@@ -55,40 +56,66 @@ export async function GetFilteredProducts(
   console.log(apiURLFilteredProducts + "?" + filterParams, "PAAAAA");
   if (!isClient) {
     const productsResponse = await fetch(
-      apiURLFilteredProducts + "?" + filterParams
+      siteUrl + apiURLFilteredProducts + "?" + filterParams
     );
     const data = await productsResponse.json();
 
     return data;
   } else {
-    const productsResponse = await fetch(
-      "/api/filters/products?" + filterParams
-    );
+    const productsResponse = await fetch(apiURLFilteredProducts + filterParams);
     const data = await productsResponse.json();
 
     return data;
   }
 }
 
-export async function GetColorFilters(): Promise<ProductsFilter[]> {
-  const response = await fetch(apiURLColors);
-  const colorsFilter: ProductsFilter[] = await response.json();
+export async function GetColorFilters(
+  isClient: boolean
+): Promise<ProductsFilter[]> {
+  if (!isClient) {
+    const response = await fetch(siteUrl + apiURLColors);
+    const colorsFilter: ProductsFilter[] = await response.json();
 
-  return colorsFilter;
+    return colorsFilter;
+  } else {
+    const response = await fetch(apiURLColors);
+    console.log(response, "color filters response!!!", isClient);
+    const colorsFilter: ProductsFilter[] = await response.json();
+
+    return colorsFilter;
+  }
 }
 
-export async function GetProductTypes(): Promise<ProductsFilter[]> {
-  const response = await fetch(apiURLProductType);
-  const producttypeFilter: ProductsFilter[] = await response.json();
+export async function GetProductTypes(
+  isClient: boolean
+): Promise<ProductsFilter[]> {
+  if (!isClient) {
+    const response = await fetch(siteUrl + apiURLProductType);
+    const producttypeFilter: ProductsFilter[] = await response.json();
 
-  return producttypeFilter;
+    return producttypeFilter;
+  } else {
+    const response = await fetch(apiURLProductType);
+    const producttypeFilter: ProductsFilter[] = await response.json();
+
+    return producttypeFilter;
+  }
 }
 
-export async function GetProductsAvailability(): Promise<ProductsFilter[]> {
-  const response = await fetch(apiURLAvailablity);
-  const availabilityFilter: ProductsFilter[] = await response.json();
+export async function GetProductsAvailability(
+  isClient: boolean
+): Promise<ProductsFilter[]> {
+  if (!isClient) {
+    const response = await fetch(siteUrl + apiURLAvailablity);
+    const availabilityFilter: ProductsFilter[] = await response.json();
 
-  return availabilityFilter;
+    return availabilityFilter;
+  } else {
+    const response = await fetch(apiURLAvailablity);
+    const availabilityFilter: ProductsFilter[] = await response.json();
+
+    return availabilityFilter;
+  }
 }
 
 export async function GetUser(email: string) {

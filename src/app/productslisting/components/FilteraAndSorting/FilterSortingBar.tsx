@@ -25,9 +25,9 @@ import {
 // } from "@/app/layout";
 
 const FilterSortingBar = async () => {
-  const colorsPromise = GetColorFilters();
-  const producttypePromise = GetProductTypes();
-  const availabilityPromise = GetProductsAvailability();
+  const colorsPromise = GetColorFilters(false);
+  const producttypePromise = GetProductTypes(false);
+  const availabilityPromise = GetProductsAvailability(false);
 
   const [colorsFilter, producttypeFilter, availabilityFilter] =
     await Promise.all([colorsPromise, producttypePromise, availabilityPromise]);

@@ -1,9 +1,9 @@
 import { Category, Product, ProductsFilter } from "@/utility/CustomTypes";
-import { apiURLCategories } from "@/utility/baseExports";
+import { apiURLCategories, siteUrl } from "@/utility/baseExports";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const categoryResponse = await fetch(apiURLCategories, {
+  const categoryResponse = await fetch(siteUrl + apiURLCategories, {
     cache: "no-store",
   });
   const categories: Category[] = await categoryResponse.json();

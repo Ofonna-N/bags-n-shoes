@@ -16,6 +16,7 @@ const AccountDetails = () => {
   });
   useEffect(() => {
     const getUser = async () => {
+      if (!email) return;
       try {
         // console.log("fething email: ", email);
         const userResponse = await GetUser(email || "");
