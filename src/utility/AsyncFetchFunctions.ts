@@ -62,7 +62,9 @@ export async function GetFilteredProducts(
 
     return data;
   } else {
-    const productsResponse = await fetch(apiURLFilteredProducts + filterParams);
+    const productsResponse = await fetch(
+      apiURLFilteredProducts + "?" + filterParams
+    );
     const data = await productsResponse.json();
 
     return data;
