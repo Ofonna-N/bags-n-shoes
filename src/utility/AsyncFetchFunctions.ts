@@ -79,7 +79,7 @@ export async function GetColorFilters(
     return colorsFilter;
   } else {
     const response = await fetch(apiURLColors);
-    console.log(response, "color filters response!!!", isClient);
+    // console.log(response, "color filters response!!!", isClient);
     const colorsFilter: ProductsFilter[] = await response.json();
 
     return colorsFilter;
