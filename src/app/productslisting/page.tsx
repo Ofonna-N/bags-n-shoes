@@ -14,7 +14,7 @@ const ProductsPage = async () => {
       {/** @ts-expect-error  Async Server Component*/}
       <FilterSortingBar />
       <FilterSortingSelectPanel />
-      {/* <ProductsContainer /> */}
+
       <ProductsContainer />
       {/* <Suspense fallback={<h1>Loading..</h1>}>
       </Suspense> */}

@@ -53,71 +53,71 @@ export async function GetFilteredProducts(
     const products = await GetProducts();
     return products;
   }
-  console.log(apiURLFilteredProducts + "?" + filterParams, "PAAAAA");
-  if (!isClient) {
-    const productsResponse = await fetch(
-      siteUrl + apiURLFilteredProducts + "?" + filterParams
-    );
-    const data = await productsResponse.json();
+  // console.log(apiURLFilteredProducts + "?" + filterParams, "PAAAAA");
+  const productsResponse = await fetch(
+    siteUrl + apiURLFilteredProducts + "?" + filterParams
+  );
+  const data = await productsResponse.json();
 
-    return data;
-  } else {
-    const productsResponse = await fetch(
-      apiURLFilteredProducts + "?" + filterParams
-    );
-    const data = await productsResponse.json();
+  return data;
+  // if (!isClient) {
+  // } else {
+  //   const productsResponse = await fetch(
+  //     apiURLFilteredProducts + "?" + filterParams
+  //   );
+  //   const data = await productsResponse.json();
 
-    return data;
-  }
+  //   return data;
+  // }
 }
 
 export async function GetColorFilters(
   isClient: boolean
 ): Promise<ProductsFilter[]> {
-  if (!isClient) {
-    const response = await fetch(siteUrl + apiURLColors);
-    const colorsFilter: ProductsFilter[] = await response.json();
+  const response = await fetch(siteUrl + apiURLColors);
+  const colorsFilter: ProductsFilter[] = await response.json();
 
-    return colorsFilter;
-  } else {
-    const response = await fetch(apiURLColors);
-    // console.log(response, "color filters response!!!", isClient);
-    const colorsFilter: ProductsFilter[] = await response.json();
+  return colorsFilter;
+  // if (!isClient) {
+  // } else {
+  //   const response = await fetch(siteUrl + apiURLColors);
+  //   // console.log(response, "color filters response!!!", isClient);
+  //   const colorsFilter: ProductsFilter[] = await response.json();
 
-    return colorsFilter;
-  }
+  //   return colorsFilter;
+  // }
 }
 
 export async function GetProductTypes(
   isClient: boolean
 ): Promise<ProductsFilter[]> {
-  if (!isClient) {
-    const response = await fetch(siteUrl + apiURLProductType);
-    const producttypeFilter: ProductsFilter[] = await response.json();
+  const response = await fetch(siteUrl + apiURLProductType);
+  const producttypeFilter: ProductsFilter[] = await response.json();
 
-    return producttypeFilter;
-  } else {
-    const response = await fetch(apiURLProductType);
-    const producttypeFilter: ProductsFilter[] = await response.json();
+  return producttypeFilter;
+  // if (!isClient) {
+  // } else {
+  //   const response = await fetch(apiURLProductType);
+  //   const producttypeFilter: ProductsFilter[] = await response.json();
 
-    return producttypeFilter;
-  }
+  //   return producttypeFilter;
+  // }
 }
 
 export async function GetProductsAvailability(
   isClient: boolean
 ): Promise<ProductsFilter[]> {
-  if (!isClient) {
-    const response = await fetch(siteUrl + apiURLAvailablity);
-    const availabilityFilter: ProductsFilter[] = await response.json();
+  const response = await fetch(siteUrl + apiURLAvailablity);
+  const availabilityFilter: ProductsFilter[] = await response.json();
 
-    return availabilityFilter;
-  } else {
-    const response = await fetch(apiURLAvailablity);
-    const availabilityFilter: ProductsFilter[] = await response.json();
+  return availabilityFilter;
+  // if (!isClient) {
+  // } else {
+  //   const response = await fetch(apiURLAvailablity);
+  //   const availabilityFilter: ProductsFilter[] = await response.json();
 
-    return availabilityFilter;
-  }
+  //   return availabilityFilter;
+  // }
 }
 
 export async function GetUser(email: string) {

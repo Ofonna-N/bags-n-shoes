@@ -61,7 +61,7 @@ export default function RootLayout({
             </div>
             <FilterSortingSideMenuOverlay />
           </div>
-          {children}
+
           <Footer />
         </body>
       </AppProvider>

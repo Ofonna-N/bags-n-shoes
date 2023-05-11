@@ -16,7 +16,7 @@ const categoryFilterSlice = createSlice({
       state.category = payload.category;
     },
     clearCategoryFilter(state) {
-      console.log("clearing category!");
+      // console.log("clearing category!");
       state.category = "products";
     },
   },
