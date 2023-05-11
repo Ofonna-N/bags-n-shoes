@@ -1,9 +1,15 @@
 import { GetProducts } from "@/utility/AsyncFetchFunctions";
 import { Product, ProductsFilter } from "@/utility/CustomTypes";
+import { apiURLProducts } from "@/utility/baseExports";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const products = await GetProducts();
+  const response = await fetch(apiURLProducts, {
+    cache: "no-store",
+  });
+  const productsMeta = await response.json();
+
+  const products: Product[] = productsMeta.data;
 
   const colors: ProductsFilter[] = [];
   products.forEach((product: Product) => {

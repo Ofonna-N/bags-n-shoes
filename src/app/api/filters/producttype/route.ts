@@ -3,7 +3,9 @@ import { apiURLCategories } from "@/utility/baseExports";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const categoryResponse = await fetch(apiURLCategories);
+  const categoryResponse = await fetch(apiURLCategories, {
+    cache: "no-store",
+  });
   const categories: Category[] = await categoryResponse.json();
 
   const categoryNames: ProductsFilter[] = [];
