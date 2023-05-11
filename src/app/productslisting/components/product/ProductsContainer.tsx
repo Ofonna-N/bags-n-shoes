@@ -58,7 +58,7 @@ const ProductsContainer = () => {
         }
       });
       // console.log(params);
-      const products = await GetFilteredProducts(params);
+      const products = await GetFilteredProducts(params, true);
       // const products = await GetProducts();
       // console.log(products, "products container", params, "params");
 

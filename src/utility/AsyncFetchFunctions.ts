@@ -28,8 +28,11 @@ export async function GetProducts(): Promise<Product[]> {
   return data;
 }
 
-export async function GetProduct(id: string): Promise<Product> {
-  const productData = await GetFilteredProducts(`product=${id}`);
+export async function GetProduct(
+  id: string,
+  isClient: boolean
+): Promise<Product> {
+  const productData = await GetFilteredProducts(`product=${id}`, isClient);
   const product = productData[0];
   return product;
 }
@@ -42,19 +45,29 @@ export async function GetCategories(): Promise<Category[]> {
 }
 
 export async function GetFilteredProducts(
-  filterParams: string
+  filterParams: string,
+  isClient: boolean
 ): Promise<Product[]> {
   if (filterParams === "" || !filterParams) {
     const products = await GetProducts();
     return products;
   }
+  console.log(apiURLFilteredProducts + "?" + filterParams, "PAAAAA");
+  if (!isClient) {
+    const productsResponse = await fetch(
+      apiURLFilteredProducts + "?" + filterParams
+    );
+    const data = await productsResponse.json();
 
-  const productsResponse = await fetch(
-    apiURLFilteredProducts + "?" + filterParams
-  );
-  const data = await productsResponse.json();
+    return data;
+  } else {
+    const productsResponse = await fetch(
+      "/api/filters/products?" + filterParams
+    );
+    const data = await productsResponse.json();
 
-  return data;
+    return data;
+  }
 }
 
 export async function GetColorFilters(): Promise<ProductsFilter[]> {

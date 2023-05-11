@@ -57,7 +57,7 @@ const SearchBarFilter: React.FC<Props> = ({ closeHandler, isMenu }) => {
   useEffect(() => {
     if (search.length < 1) return;
     let params = `maxCount=4&search=${search}`;
-    const p = GetFilteredProducts(params).then((response) => {
+    const p = GetFilteredProducts(params, true).then((response) => {
       // console.log(response, "search products");
       setProducts(response);
     });

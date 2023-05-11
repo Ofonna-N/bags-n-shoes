@@ -39,7 +39,7 @@ export default function RootLayout({
     <html lang="en" className={`${assistant.className}`}>
       <AppProvider>
         <body>
-          {/* <ToggleLister /> */}
+          <ToggleLister />
           {/* <ClientSideInitializers /> */} --
           {/* <div className="text-center py-4 shadow-sm text-[1.2rem] whitespace-nowrap">
             Free shipping available on all orders!
