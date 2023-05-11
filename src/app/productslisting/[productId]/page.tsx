@@ -1,8 +1,8 @@
 import Container from "@/app/components/containers/Container";
-// import { GetFilteredProducts, GetProduct } from "@/utility/AsyncFetchFunctions";
+import { GetFilteredProducts, GetProduct } from "@/utility/AsyncFetchFunctions";
 import {
   getRandomSort,
-  siteUrl,
+  backendUrl,
   sortingDropDownValues,
 } from "@/utility/baseExports";
 import React from "react";
@@ -12,10 +12,10 @@ import ProductDetails from "../components/product/ProductDetails";
 import ProductCard from "../components/product/ProductCard";
 import FeaturedProductsWrappper from "../components/product/FeaturedProductsWrappper";
 import { Product } from "@/utility/CustomTypes";
-import {
-  GetFilteredProducts,
-  GetProduct,
-} from "@/app/functions/RouteAlternative";
+// import {
+//   GetFilteredProducts,
+//   GetProduct,
+// } from "@/app/functions/RouteAlternative";
 
 type DynamicRouteProp = {
   params: { productId: string };
@@ -23,7 +23,7 @@ type DynamicRouteProp = {
 
 // async function GetRawProduct(id: string) {
 //   const pResponse = await fetch(
-//     `${siteUrl}/api/products?populate=*&filters[id][$eq]=${id}`,
+//     `${backendUrl}/api/products?populate=*&filters[id][$eq]=${id}`,
 //     {
 //       headers: {
 //         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -59,7 +59,7 @@ type DynamicRouteProp = {
 //       break;
 //   }
 //   const pResponse = await fetch(
-//     `${siteUrl}/api/products?populate=*&pagination[pageSize]=4&filters[name][$ne]=${productName}&${sortValue}&filters[category][name][$eq]=${categoryName}`,
+//     `${backendUrl}/api/products?populate=*&pagination[pageSize]=4&filters[name][$ne]=${productName}&${sortValue}&filters[category][name][$eq]=${categoryName}`,
 //     {
 //       headers: {
 //         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,

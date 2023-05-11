@@ -7,7 +7,7 @@ import { FaPlay } from "react-icons/fa";
 import VideoSection from "./components/layout/VideoSection";
 import TextPromoSection from "./components/layout/TextPromoSection";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <HeroSection />

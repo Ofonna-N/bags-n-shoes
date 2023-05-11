@@ -33,29 +33,6 @@ const LoginForm = () => {
     } else {
       setErrorMsg("Incorrect email or password.");
     }
-    // return null;
-    // try {
-    //   const login = await fetch(`${siteUrlText}/api/auth/login`, {
-    //     method: "POST",
-    //     body: JSON.stringify({ email, password }),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-    //   // const userInfo = await login.json();
-    //   // console.log(userInfo);
-    //   if (login.ok) {
-    //     console.log("Logged In!!", await login.json());
-    //     // console.log("has user: ", appAuth);
-    //     router.push("/account");
-    //   } else {
-    //     // console.log("Error");
-    //     setErrorMsg("Incorrect email or password.");
-    //   }
-    // } catch (error) {
-    //   // setErrorMsg("Incorrect email or password.");
-    //   console.log((error as Error).message);
-    // }
   };
   useEffect(() => {
     if (validAccount) {

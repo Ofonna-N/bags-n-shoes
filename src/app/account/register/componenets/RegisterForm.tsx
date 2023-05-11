@@ -4,7 +4,7 @@ import TextInput from "../../components/TextInput";
 import EmptyBtn from "@/app/productslisting/components/product/EmptyBtn";
 import AccountForm from "../../components/AccountForm";
 import FormErrorModal from "../../components/FormErrorModal";
-import { siteUrlText } from "@/utility/baseExports";
+// import { siteUrlText } from "@/utility/baseExports";
 import { useRouter } from "next/navigation";
 import useValidAccount from "@/customHooks/useValidAccount";
 import {
@@ -29,32 +29,21 @@ const RegisterForm = () => {
     // console.log("Register user");
     setisLoading(true);
     try {
-      // const register = await fetch(`${siteUrlText}/api/auth/register`, {
-      //   method: "POST",
-      //   body: JSON.stringify({ firstName, lastName, email, password }),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // });
-
       const register = await CreateUserWithEmailAndPassword(email, password);
 
       if (register.ok) {
         // console.log("Registered Account!");
-        const createdUserResponse = await fetch(
-          siteUrlText + "/api/auth/register",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              firstName,
-              lastName,
-              email,
-            }),
-          }
-        );
+        const createdUserResponse = await fetch("/api/auth/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+          }),
+        });
         const createdUserDB = await createdUserResponse.json();
         console.log(createdUserDB, "New user created at database!");
         const login = await SignInWithEmailAndPassword(email, password);

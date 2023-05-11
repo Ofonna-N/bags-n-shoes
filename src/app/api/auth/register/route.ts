@@ -1,12 +1,12 @@
 import { RegisterRequestBody } from "@/utility/CustomTypes";
-import { siteUrl } from "@/utility/baseExports";
+import { backendUrl } from "@/utility/baseExports";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const credentials: Promise<RegisterRequestBody> = await req.json();
   const { firstName, lastName, email } = await credentials;
 
-  const userResponse = await fetch(siteUrl + "/api/app-users", {
+  const userResponse = await fetch(backendUrl + "/api/app-users", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,

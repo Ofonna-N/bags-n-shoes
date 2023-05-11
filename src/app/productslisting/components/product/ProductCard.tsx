@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { baseImageUrl, siteUrl } from "@/utility/baseExports";
+import { baseImageUrl, backendUrl } from "@/utility/baseExports";
 import Badge from "./BasicBadge";
 import { useRouter } from "next/navigation";
 import { Product } from "@/utility/CustomTypes";

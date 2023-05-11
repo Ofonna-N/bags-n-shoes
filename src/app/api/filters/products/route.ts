@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { Product } from "@/utility/CustomTypes";
-import { siteUrl, sortingDropDownValues } from "@/utility/baseExports";
+import { backendUrl, sortingDropDownValues } from "@/utility/baseExports";
 type Params = {
   [key: string]: string;
 };
@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
     }
   }
   const productsResponse = await fetch(
-    `${siteUrl}/api/products?populate=*&${params.join("&")}`,
+    `${backendUrl}/api/products?populate=*&${params.join("&")}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,

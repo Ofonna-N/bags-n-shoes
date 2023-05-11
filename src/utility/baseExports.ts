@@ -3,32 +3,32 @@ const baseImageUrl =
 
 export { baseImageUrl };
 
-// const siteUrl = "http://127.0.0.1:1337";
-const siteUrl = "https://strapi-xpu6.onrender.com";
+// const backendUrl = "http://127.0.0.1:1337";
+const backendUrl = "https://strapi-xpu6.onrender.com";
+export { backendUrl };
+
+const siteUrl = "http://localhost:3000";
 export { siteUrl };
 
-const siteUrlText = "http://127.0.0.1:3000";
-export { siteUrlText };
-
-const apiURLProducts = "http://127.0.0.1:3000/api/products";
+const apiURLProducts = siteUrl + "/api/products";
 export { apiURLProducts };
 
-const apiURLCategories = "http://127.0.0.1:3000/api/categories";
+const apiURLCategories = siteUrl + "/api/categories";
 export { apiURLCategories };
 
-const apiURLFilteredProducts = "http://127.0.0.1:3000/api/filters/products";
+const apiURLFilteredProducts = siteUrl + "/api/filters/products";
 export { apiURLFilteredProducts };
 
-const apiURLAvailablity = "http://127.0.0.1:3000/api/filters/availability";
+const apiURLAvailablity = siteUrl + "/api/filters/availability";
 export { apiURLAvailablity };
 
-const apiURLColors = "http://127.0.0.1:3000/api/filters/colors";
+const apiURLColors = siteUrl + "/api/filters/colors";
 export { apiURLColors };
 
-const apiURLProductType = "http://127.0.0.1:3000/api/filters/producttype";
+const apiURLProductType = siteUrl + "/api/filters/producttype";
 export { apiURLProductType };
 
-const apiUrlUser = "http://127.0.0.1:3000/api/auth/user";
+const apiUrlUser = siteUrl + "/api/auth/user";
 export { apiUrlUser };
 
 const sortingDropDownValues = {

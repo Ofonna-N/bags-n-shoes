@@ -5,18 +5,18 @@ import FilterPriceRangeMenu from "./FilterPriceRangeMenu";
 import SortingDropdown from "./SortingDropdown";
 import FilterSortingSideMenuBtn from "./FilterSortingSideMenuBtn";
 import TestClientComponent from "./TestClientComponent";
-import {
-  GetColorFilters,
-  GetProductTypes,
-  GetProducts,
-  GetProductsAvailability,
-} from "@/app/functions/RouteAlternative";
 // import {
 //   GetColorFilters,
 //   GetProductTypes,
 //   GetProducts,
 //   GetProductsAvailability,
-// } from "@/utility/AsyncFetchFunctions";
+// } from "@/app/functions/RouteAlternative";
+import {
+  GetColorFilters,
+  GetProductTypes,
+  GetProducts,
+  GetProductsAvailability,
+} from "@/utility/AsyncFetchFunctions";
 // import {
 //   GetColorFilters,
 //   GetProductTypes,

@@ -1,14 +1,13 @@
-import { siteUrl } from "@/utility/baseExports";
+import { backendUrl } from "@/utility/baseExports";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   const categoriesResponse = await fetch(
-    `${siteUrl}/api/categories?populate=*`,
+    `${backendUrl}/api/categories?populate=*`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
       },
-      cache: "no-store",
     }
   );
 

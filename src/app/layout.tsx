@@ -39,15 +39,15 @@ export default function RootLayout({
     <html lang="en" className={`${assistant.className}`}>
       <AppProvider>
         <body>
-          <ToggleLister />
-          {/* <ClientSideInitializers /> */}
-          <div className="text-center py-4 shadow-sm text-[1.2rem] whitespace-nowrap">
+          {/* <ToggleLister /> */}
+          {/* <ClientSideInitializers /> */} --
+          {/* <div className="text-center py-4 shadow-sm text-[1.2rem] whitespace-nowrap">
             Free shipping available on all orders!
-          </div>
-          {/**@ts-expect-error Async Server Component*/}
-          <SearchBarModal />
-          {/* <TestClientComponent /> */}
-          <div className="grid grid-cols-1">
+          </div> */}
+          {/**@ts-ezxpect-error Async Server Component*/}--
+          {/* <SearchBarModal /> */}
+          {/* <TestClientComponent /> */}--
+          {/* <div className="grid grid-cols-1">
             <div className="border-y">
               <Container>
                 <Navbar />
@@ -60,7 +60,8 @@ export default function RootLayout({
               </MenuSidePanelWrapper>
             </div>
             <FilterSortingSideMenuOverlay />
-          </div>
+          </div> */}
+          {/* {children} */}
           <Footer />
         </body>
       </AppProvider>

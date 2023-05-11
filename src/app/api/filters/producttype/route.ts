@@ -1,5 +1,5 @@
 import { Category, Product, ProductsFilter } from "@/utility/CustomTypes";
-import { apiURLCategories, apiURLProducts } from "@/utility/baseExports";
+import { apiURLCategories } from "@/utility/baseExports";
 import { NextResponse } from "next/server";
 
 export async function GET() {
