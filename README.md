@@ -1,8 +1,9 @@
 #Ecommerce Store
 
-[site gif.webm](https://github.com/Ofonna-N/bags-n-shoes--ecommerce-stroe-/assets/108894366/9ee3da24-ce4a-46d1-8720-a51f014c855d)
+[site gif.webm](https://github.com/Ofonna-N/bags-n-shoes--ecommerce-stroe-/assets/108894366/615ad529-ad4c-4a35-b92e-c25c2ee21181)
 
 [View Demo](https://bags-n-shoes-ecommerce-store.vercel.app/)
+
 
 ### Demo account<br>
 Email: mikolo@yahoo.com <br>
