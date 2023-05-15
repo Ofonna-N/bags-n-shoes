@@ -7,7 +7,7 @@
 
 ### Demo account<br>
 Email: mikolo@yahoo.com <br>
-pasword: nmikolo#
+pasword: mikolo#
 
 An ecommerce website built with Next.js, TailwindCSS, React Redux, Firebase Auth, and Strapi CMS. With Next.js, I achieved fast server-side rendering and optimized performance. The sleek UI, designed with Tailwind CSS, ensures a visually appealing and responsive experience. User authentication is handled securely using Firebase Auth. Strapi CMS enables easy management of product listings and content updates. Discover a seamless blend of cutting-edge technologies for a modern ecommerce experience.
 
