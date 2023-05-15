@@ -10,7 +10,7 @@ import myApp from "./firebaseApp";
 import { UserValidationPromise } from "@/utility/CustomTypes";
 
 // console.log("Running Firebase auth");
-const appAuth = getAuth(myApp);
+const appAuth = getAuth(myApp());
 // let UserEmail: string | null = "";
 
 // onAuthStateChanged(appAuth, (user) => {

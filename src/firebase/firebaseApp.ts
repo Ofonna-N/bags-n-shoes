@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getApp } from "firebase/app";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -8,6 +8,14 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_PROJECT_ID,
 };
 // console.log("initialized Firebase App");
-const myApp = initializeApp(firebaseConfig);
+const myApp = () => {
+  try {
+    console.log("getting old APP...");
+    return getApp();
+  } catch (err) {
+    console.log("new app fb init");
+    return initializeApp(firebaseConfig);
+  }
+};
 
 export default myApp;
