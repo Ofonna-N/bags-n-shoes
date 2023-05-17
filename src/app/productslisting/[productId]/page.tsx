@@ -82,12 +82,11 @@ const ProductPage = async ({ params }: DynamicRouteProp) => {
   // );
   // console.log(featuredProducts.length, "Yessirsky");
   // console.log(product.attributes.name, "Yessirsky");
-  const product = await GetProduct(params.productId, false);
+  const product = await GetProduct(params.productId);
   const featuredProducts = await GetFilteredProducts(
     `maxCount=4&exclude=${product.attributes.name}&producttype=${
       product.attributes.category.data.attributes.name
-    }&sort=${getRandomSort()}`,
-    false
+    }&sort=${getRandomSort()}`
   );
   // return null;
   return (

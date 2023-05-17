@@ -40,7 +40,7 @@ const CartDisplay = () => {
           </li>
         ))}
       </ul>
-      <div className=" mt-[2rem] text-center text-[1.8rem] space-y-10 md:text-right  overflow-hidden">
+      <div className="mb-12 mt-[2rem] text-center text-[1.8rem] space-y-10 md:text-right  overflow-hidden">
         <h3>
           Subtotal <span className="text-base2 ml-3">${cart.totalCost}</span>
         </h3>

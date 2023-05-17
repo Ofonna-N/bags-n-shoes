@@ -15,6 +15,7 @@ import {
 import { toggleSearchBarMenuOverlay } from "@/appstore/slices/SideMenuToggleSlice";
 import { clearCategoryFilter } from "@/appstore/slices/CategoryFilterSlice";
 import { useRouter } from "next/navigation";
+import { apiURLFilteredProducts } from "@/utility/baseExports";
 
 interface Props {
   isMenu?: boolean;
@@ -57,10 +58,17 @@ const SearchBarFilter: React.FC<Props> = ({ closeHandler, isMenu }) => {
   useEffect(() => {
     if (search.length < 1) return;
     let params = `maxCount=4&search=${search}`;
-    const p = GetFilteredProducts(params, true).then((response) => {
+    const p = fetch(`${apiURLFilteredProducts}?${params}`);
+    p.then((response) => {
       // console.log(response, "search products");
-      setProducts(response);
+      return response.json();
+    }).then((data) => {
+      setProducts(data as Product[]);
     });
+    // const p = GetFilteredProducts(params).then((response) => {
+    //   // console.log(response, "search products");
+    //   setProducts(response);
+    // });
   }, [search]);
 
   useEffect(() => {

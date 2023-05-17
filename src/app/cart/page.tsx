@@ -12,8 +12,7 @@ import ProductCard from "../productslisting/components/product/ProductCard";
 
 const CartPage = async () => {
   const featuredProducts = await GetFilteredProducts(
-    `maxCount=4&availability=In Stock&sort=${getRandomSort()}`,
-    false
+    `maxCount=4&availability=In Stock&sort=${getRandomSort()}`
   );
   return (
     <Container>

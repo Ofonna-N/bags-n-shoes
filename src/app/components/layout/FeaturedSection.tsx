@@ -5,7 +5,7 @@ import ProductCard from "@/app/productslisting/components/product/ProductCard";
 // import { GetFilteredProducts } from "@/app/functions/RouteAlternative";
 
 const FeaturedSection = async () => {
-  const products = await GetFilteredProducts("maxCount=8", false);
+  const products = await GetFilteredProducts("maxCount=8");
 
   return (
     <Container>

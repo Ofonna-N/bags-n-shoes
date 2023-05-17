@@ -10,6 +10,7 @@ import {
   GetFilteredProducts,
   GetProducts,
 } from "@/utility/AsyncFetchFunctions";
+import { apiURLFilteredProducts } from "@/utility/baseExports";
 
 const ProductsContainer = () => {
   const filterValues = useAppSelector((state) => state.SelectPanelSlice);
@@ -58,9 +59,13 @@ const ProductsContainer = () => {
         }
       });
       // console.log(params);
-      const products = await GetFilteredProducts(params, true);
-      // const products = await GetProducts();
-      // console.log(products, "products container", params, "params");
+      // const products = await GetFilteredProducts(params);
+      // console.log("params: ", params);
+
+      const productsResponse = await fetch(
+        `${apiURLFilteredProducts}?${params}`
+      );
+      const products = await productsResponse.json();
 
       setFilteredProducts(products);
       // console.log("ARRR", products);

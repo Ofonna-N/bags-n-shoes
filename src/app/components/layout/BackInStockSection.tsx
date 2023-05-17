@@ -5,7 +5,7 @@ import ProductCard from "@/app/productslisting/components/product/ProductCard";
 import CategoryCard from "./CategoryCard";
 
 const BackInStockSection = async () => {
-  const product = await GetProduct("8", false);
+  const product = await GetProduct("8");
 
   return (
     <Container>
