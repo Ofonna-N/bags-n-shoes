@@ -2,7 +2,7 @@
 
 [site gif.webm](https://github.com/Ofonna-N/bags-n-shoes--ecommerce-stroe-/assets/108894366/615ad529-ad4c-4a35-b92e-c25c2ee21181)
 
-[View Demo](https://bags-n-shoes-ecommerce-store.vercel.app/)
+<!-- [View Demo](https://bags-n-shoes-ecommerce-store.vercel.app/) -->
 
 
 ### Demo account<br>
